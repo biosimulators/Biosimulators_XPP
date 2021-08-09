@@ -35,6 +35,9 @@ RUN apt-get update -y \
         make \
         gcc \
         libx11-dev \
+        libc6-dev \
+        libx11-6 \
+        libc6 \
     \
     && cd /tmp \
     && wget http://www.math.pitt.edu/~bard/bardware/xppaut_latest.tar.gz \
@@ -53,6 +56,7 @@ RUN apt-get update -y \
         make \
         gcc \
         libx11-dev \
+        libc6-dev \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
@@ -62,6 +66,10 @@ RUN pip install /root/Biosimulators_XPP \
     && rm -rf /root/Biosimulators_XPP
 ENV VERBOSE=0 \
     MPLBACKEND=PDF
+RUN mkdir -p /.config/matplotlib \
+    && mkdir -p /.cache/matplotlib \
+    && chmod ugo+rw /.config/matplotlib \
+    && chmod ugo+rw /.cache/matplotlib
 
 # Entrypoint
 ENTRYPOINT ["biosimulators-xpp"]

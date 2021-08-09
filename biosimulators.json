@@ -1,0 +1,1299 @@
+{
+  "id": "xpp",
+  "name": "XPP",
+  "version": "8.0",
+  "description": "Tool for solving differential, difference, delay, functional, and stochastic equations and boundary value problems.",
+  "urls": [{
+      "type": "Home page",
+      "url": "http://www.math.pitt.edu/~bard/xpp/xpp.html"
+    },
+    {
+      "type": "Source repository",
+      "url": "https://github.com/Ermentrout/xppaut"
+    },
+    {
+      "type": "License",
+      "url": "https://github.com/Ermentrout/xppaut/blob/master/LICENSE"
+    }
+  ],
+  "image": {
+    "url": "ghcr.io/biosimulators/biosimulators_xpp/xpp:8.0",
+    "format": {
+      "namespace": "EDAM",
+      "id": "format_3973",
+      "version": null,
+      "supportedFeatures": []
+    },
+    "operatingSystemType": "Linux"
+  },
+  "authors": [{
+    "firstName": "G. Bard",
+    "lastName": "Ermentrout",
+    "identifiers": [{
+      "namespace": "orcid",
+      "id": "0000-0002-5854-0654",
+      "url": "https://orcid.org/0000-0002-5854-0654"
+    }]
+  }],
+  "references": {
+    "identifiers": [],
+    "citations": [{
+        "title": "XPPAUT",
+        "authors": "Bard Ermentrout",
+        "journal": "Computational Systems Neurobiology",
+        "year": 2012,
+        "pages": "519-531",
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1007/978-94-007-3858-4_17",
+          "url": "https://doi.org/10.1007/978-94-007-3858-4_17"
+        }]
+      },
+      {
+        "title": "Simulating, analyzing, and animating dynamical systems: a guide to XPPAUT for researchers and students",
+        "authors": "Bard Ermentrout",
+        "journal": "Society for Industrial and Applied Mathematics",
+        "year": 2002,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1137/1.9780898718195",
+          "url": "https://doi.org/10.1137/1.9780898718195"
+        }]
+      }
+    ]
+  },
+  "license": {
+    "namespace": "SPDX",
+    "id": "GPL-2.0-only"
+  },
+  "algorithms": [{
+      "id": "discrete",
+      "name": "Gillepie's method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000029"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000295"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+        "kisaoId": {
+          "namespace": "KISAO",
+          "id": "KISAO_0000488"
+        },
+        "id": "seed",
+        "name": "Random number generator seed",
+        "type": "integer",
+        "value": null,
+        "recommendedRange": null,
+        "availableSoftwareInterfaceTypes": [
+          "desktop application",
+          "library",
+          "command-line application",
+          "BioSimulators Docker image"
+        ]
+      }],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": [{
+        "title": "Exact stochastic simulation of coupled chemical reactions",
+        "authors": "Daniel T. Gillespie",
+        "journal": "Journal of Physical Chemistry",
+        "volume": 81,
+        "issue": 25,
+        "pages": "2340-2361",
+        "year": 1977,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1021/j100540a008",
+          "url": "https://doi.org/10.1021/j100540a008"
+        }]
+      }]
+    },
+    {
+      "id": "euler",
+      "name": "Forward Euler one step method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000030"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "backeul",
+      "name": "Backward Euler method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000031"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000597"
+          },
+          "id": null,
+          "name": "tolerance",
+          "type": "float",
+          "value": "1e-7",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000486"
+          },
+          "id": null,
+          "name": "Maximum number of iterates for each step",
+          "type": "integer",
+          "value": "10",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "adams",
+      "name": "Adams-Bashforth fourth order predictor-corrector method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000279"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "gear",
+      "name": "Gear method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000288"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000485"
+          },
+          "id": "dtmin",
+          "name": "minimum allowable timestep",
+          "type": "float",
+          "value": "1e-12",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000467"
+          },
+          "id": "dtmax",
+          "name": "maximum allowable timestep",
+          "type": "float",
+          "value": "1",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000597"
+          },
+          "id": "toler",
+          "name": "tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "5dp",
+      "name": "Dormand-Prince method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000087"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000209"
+          },
+          "id": "toler",
+          "name": "relative tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000211"
+          },
+          "id": "atoler",
+          "name": "absolute tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "83dp",
+      "name": "Dormand-Prince 8(5,3) method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000436"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000209"
+          },
+          "id": "toler",
+          "name": "relative tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000211"
+          },
+          "id": "atoler",
+          "name": "absolute tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "2rb",
+      "name": "Two step Rosenbrock method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000033"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000209"
+          },
+          "id": "toler",
+          "name": "relative tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000211"
+          },
+          "id": "atoler",
+          "name": "absolute tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000480"
+          },
+          "id": "bandlo",
+          "name": "lower half-bandwidth",
+          "type": "integer",
+          "value": "0",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000479"
+          },
+          "id": "bandup",
+          "name": "upper half-bandwidth",
+          "type": "integer",
+          "value": "0",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "cvode",
+      "name": "CVODE",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000019"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000209"
+          },
+          "id": "toler",
+          "name": "relative tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000211"
+          },
+          "id": "atoler",
+          "name": "absolute tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000480"
+          },
+          "id": "bandlo",
+          "name": "lower half-bandwidth",
+          "type": "integer",
+          "value": "0",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000479"
+          },
+          "id": "bandup",
+          "name": "upper half-bandwidth",
+          "type": "integer",
+          "value": "0",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": [{
+        "name": "SUNDIALS",
+        "version": null,
+        "required": true,
+        "freeNonCommercialLicense": true,
+        "url": "https://computing.llnl.gov/projects/sundials"
+      }],
+      "citations": [{
+        "title": "CVODE, a stiff/nonstiff ODE solver in C",
+        "authors": "Scott D. Cohen, Alan C. Hindmarsh & Paul F. Dubois",
+        "journal": "Computers in Physics",
+        "volume": 10,
+        "issue": 2,
+        "pages": "138-143",
+        "year": 1996,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1063/1.4822377",
+          "url": "https://doi.org/10.1063/1.4822377"
+        }]
+      }]
+    },
+    {
+      "id": "rungekutta",
+      "name": "4th order Runge-Kutta method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000032"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "qualrk",
+      "name": "Quality 4th order Runge-Kutta method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000086"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000597"
+          },
+          "id": "toler",
+          "name": "tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000485"
+          },
+          "id": "dtmin",
+          "name": "minimum allowable timestep",
+          "type": "float",
+          "value": "1e-12",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000467"
+          },
+          "id": "dtmax",
+          "name": "maximum allowable timestep",
+          "type": "float",
+          "value": "1",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000665"
+          },
+          "id": "newt_iter",
+          "name": "Maximum number of iterates per root finding step",
+          "type": "integer",
+          "value": "1000",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000565"
+          },
+          "id": "newt_tol",
+          "name": "Newton tolerance",
+          "type": "float",
+          "value": "1e-3",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000666"
+          },
+          "id": "jac_eps",
+          "name": "Jacobian epsilon",
+          "type": "float",
+          "value": "1e-5",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "modeuler",
+      "name": "Two step modified Euler method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000301"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "ymp",
+      "name": "Symplectic method",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000367"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    },
+    {
+      "id": "volterra",
+      "name": "Second order backward method for Volterra equations",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000664"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000597"
+          },
+          "id": null,
+          "name": "tolerance",
+          "type": "float",
+          "value": "1e-7",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000486"
+          },
+          "id": null,
+          "name": "Maximum number of iterates for each step",
+          "type": "integer",
+          "value": "10",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000667"
+          },
+          "id": "vmaxpts",
+          "name": "maximum number of points",
+          "type": "integer",
+          "value": "4000",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": [{
+        "title": "Analytical and Numerical Methods for Volterra Equations",
+        "authors": "Peter Linz",
+        "year": 1985,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.1137/1.9781611970852",
+          "url": "https://doi.org/10.1137/1.9781611970852"
+        }]
+      }]
+    },
+    {
+      "id": "stiff",
+      "name": "Gear-like method for stiff ODE systems",
+      "kisaoId": {
+        "namespace": "KISAO",
+        "id": "KISAO_0000668"
+      },
+      "modelingFrameworks": [{
+        "namespace": "SBO",
+        "id": "SBO_0000293"
+      }],
+      "modelFormats": [{
+        "namespace": "EDAM",
+        "id": "format_9010",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "simulationFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3685",
+        "version": "L1V3",
+        "supportedFeatures": []
+      }],
+      "archiveFormats": [{
+        "namespace": "EDAM",
+        "id": "format_3686",
+        "version": null,
+        "supportedFeatures": []
+      }],
+      "parameters": [{
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000485"
+          },
+          "id": "dtmin",
+          "name": "minimum allowable timestep",
+          "type": "float",
+          "value": "1e-12",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000467"
+          },
+          "id": "dtmax",
+          "name": "maximum allowable timestep",
+          "type": "float",
+          "value": "1",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000597"
+          },
+          "id": "toler",
+          "name": "tolerance",
+          "type": "float",
+          "value": "0.001",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
+      "dependentDimensions": [{
+        "namespace": "SIO",
+        "id": "SIO_000418"
+      }],
+      "dependentVariableTargetPatterns": [],
+      "availableSoftwareInterfaceTypes": [
+        "desktop application",
+        "library",
+        "command-line application",
+        "BioSimulators Docker image"
+      ],
+      "dependencies": null,
+      "citations": []
+    }
+  ],
+  "interfaceTypes": [
+    "desktop application",
+    "library",
+    "command-line application",
+    "BioSimulators Docker image"
+  ],
+  "supportedOperatingSystemTypes": [
+    "Linux",
+    "Mac OS",
+    "Windows"
+  ],
+  "supportedProgrammingLanguages": [{
+      "namespace": "Linguist",
+      "id": "C"
+    },
+    {
+      "namespace": "Linguist",
+      "id": "MATLAB"
+    },
+    {
+      "namespace": "Linguist",
+      "id": "Python"
+    }
+  ],
+  "funding": [],
+  "biosimulators": {
+    "specificationVersion": "1.0.0",
+    "imageVersion": "1.0.0",
+    "validated": false,
+    "validationTests": null
+  }
+}
