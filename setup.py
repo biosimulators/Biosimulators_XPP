@@ -39,7 +39,6 @@ setuptools.setup(
     keywords=[
         'systems biology',
         'computational biology',
-        'logical model',
         'numerical simulation',
         'BioSimulators',
         'SBML',
