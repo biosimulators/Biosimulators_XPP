@@ -30,7 +30,7 @@ docker pull ghcr.io/biosimulators/xpp
 
 ### Local usage
 ```
-usage: xpp [-h] [-d] [-q] -i ARCHIVE [-o OUT_DIR] [-v]
+usage: biosimulators-xpp [-h] [-d] [-q] -i ARCHIVE [-o OUT_DIR] [-v]
 
 BioSimulators-compliant command-line interface to the XPP simulation program <http://www.math.pitt.edu/~bard/xpp/xpp.html>.
 
