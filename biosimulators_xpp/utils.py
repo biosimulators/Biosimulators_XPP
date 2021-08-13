@@ -16,12 +16,10 @@ from kisao.utils import get_preferred_substitute_algorithm_by_ids
 import collections  # noqa: F401
 import os
 import pandas
-import re
 import subprocess
 import tempfile
 
 __all__ = [
-    'get_xpp_version',
     'get_simulation_method_kisao_map',
     'validate_variables',
     'apply_model_changes',
@@ -32,18 +30,6 @@ __all__ = [
     'exec_xpp_simulation',
     'get_results_of_sed_variables',
 ]
-
-
-def get_xpp_version():
-    """ Get the installed version of XPP
-
-    Returns:
-        :obj:`str`: version
-    """
-    result = subprocess.run(["xppaut", "-version"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
-    if result.returncode != 0:
-        raise RuntimeError('XPP failed: {}'.format(result.stdout.decode("utf-8")))
-    return re.search(r"(\d+\.\d*|\d*\.\d+)", result.stdout.decode("utf-8")).group(0)
 
 
 def get_simulation_method_kisao_map():

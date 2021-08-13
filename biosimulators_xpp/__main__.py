@@ -7,13 +7,13 @@
 :License: MIT
 """
 
+from . import get_simulator_version
 from ._version import __version__
 from .core import exec_sedml_docs_in_combine_archive
-from .utils import get_xpp_version
 from biosimulators_utils.simulator.cli import build_cli
 
 App = build_cli('biosimulators-xpp', __version__,
-                'XPP', get_xpp_version(), 'http://www.math.pitt.edu/~bard/xpp/xpp.html',
+                'XPP', get_simulator_version(), 'http://www.math.pitt.edu/~bard/xpp/xpp.html',
                 exec_sedml_docs_in_combine_archive)
 
 

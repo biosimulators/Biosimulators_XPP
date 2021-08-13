@@ -5,6 +5,7 @@ from biosimulators_utils.sedml.data_model import (
     Algorithm, AlgorithmParameterChange,
     Variable, Symbol)
 from biosimulators_utils.warnings import BioSimulatorsWarning
+from biosimulators_xpp import get_simulator_version
 from biosimulators_xpp import utils
 from kisao.exceptions import AlgorithmCannotBeSubstitutedException
 from kisao.warnings import AlgorithmSubstitutedWarning
@@ -25,12 +26,12 @@ class UtilsTestCase(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.dirname)
 
-    def test_get_xpp_version(self):
-        self.assertEqual(utils.get_xpp_version(), '8.0')
+    def test_get_simulator_version(self):
+        self.assertEqual(get_simulator_version(), '8.0')
 
         with mock.patch('subprocess.run', return_value=mock.Mock(returncode=1, stdout=mock.Mock(decode=lambda encoding: 'msg'))):
             with self.assertRaises(RuntimeError):
-                utils.get_xpp_version()
+                get_simulator_version()
 
     def test_get_simulation_method_kisao_map(self):
         self.assertEqual(utils.get_simulation_method_kisao_map(), SIMULATION_METHOD_KISAO_MAP)
