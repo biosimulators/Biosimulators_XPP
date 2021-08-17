@@ -8,9 +8,10 @@
 
 from .utils import validate_variables, apply_model_changes, set_up_simulation, exec_xpp_simulation, get_results_of_sed_variables
 from biosimulators_utils.combine.exec import exec_sedml_docs_in_archive
+from biosimulators_utils.config import get_config
 from biosimulators_utils.log.data_model import CombineArchiveLog, TaskLog  # noqa: F401
 from biosimulators_utils.model_lang.xpp.validation import validate_model
-from biosimulators_utils.report.data_model import ReportFormat  # noqa: F401
+from biosimulators_utils.report.data_model import ReportFormat, SedDocumentResults  # noqa: F401
 from biosimulators_utils.sedml import validation
 from biosimulators_utils.sedml.data_model import (Task, ModelLanguage, ModelAttributeChange,  # noqa: F401
                                                   SteadyStateSimulation, UniformTimeCourseSimulation,
@@ -24,8 +25,10 @@ __all__ = ['exec_sedml_docs_in_combine_archive', 'exec_sed_task']
 
 
 def exec_sedml_docs_in_combine_archive(archive_filename, out_dir,
+                                       return_results=False,
                                        report_formats=None, plot_formats=None,
-                                       bundle_outputs=None, keep_individual_outputs=None):
+                                       bundle_outputs=None, keep_individual_outputs=None,
+                                       raise_exceptions=True):
     """ Execute the SED tasks defined in a COMBINE/OMEX archive and save the outputs
 
     Args:
@@ -37,21 +40,28 @@ def exec_sedml_docs_in_combine_archive(archive_filename, out_dir,
             * HDF5: directory in which to save a single HDF5 file (``{ out_dir }/reports.h5``),
               with reports at keys ``{ relative-path-to-SED-ML-file-within-archive }/{ report.id }`` within the HDF5 file
 
+        return_results (:obj:`bool`, optional): whether to return the result of each output of each SED-ML file
         report_formats (:obj:`list` of :obj:`ReportFormat`, optional): report format (e.g., csv or h5)
         plot_formats (:obj:`list` of :obj:`VizFormat`, optional): report format (e.g., pdf)
         bundle_outputs (:obj:`bool`, optional): if :obj:`True`, bundle outputs into archives for reports and plots
         keep_individual_outputs (:obj:`bool`, optional): if :obj:`True`, keep individual output files
+        raise_exceptions (:obj:`bool`, optional): whether to raise exceptions
 
     Returns:
-        :obj:`CombineArchiveLog`: log
+        :obj:`tuple`:
+
+            * :obj:`SedDocumentResults`: results
+            * :obj:`CombineArchiveLog`: log
     """
     sed_doc_executer = functools.partial(exec_sed_doc, exec_sed_task)
     return exec_sedml_docs_in_archive(sed_doc_executer, archive_filename, out_dir,
                                       apply_xml_model_changes=False,
+                                      return_results=return_results,
                                       report_formats=report_formats,
                                       plot_formats=plot_formats,
                                       bundle_outputs=bundle_outputs,
-                                      keep_individual_outputs=keep_individual_outputs)
+                                      keep_individual_outputs=keep_individual_outputs,
+                                      raise_exceptions=raise_exceptions)
 
 
 def exec_sed_task(task, variables, log=None):
@@ -74,27 +84,32 @@ def exec_sed_task(task, variables, log=None):
           * Task requires a time course that XPP doesn't support
           * Task requires an algorithm that XPP doesn't support
     """
+    config = get_config()
+
     log = log or TaskLog()
 
     # validate task
     model = task.model
     sim = task.simulation
 
-    raise_errors_warnings(validation.validate_task(task),
-                          error_summary='Task `{}` is invalid.'.format(task.id))
-    raise_errors_warnings(validation.validate_model_language(model.language, ModelLanguage.XPP),
-                          error_summary='Language for model `{}` is not supported.'.format(model.id))
-    raise_errors_warnings(validation.validate_model_change_types(model.changes, (ModelAttributeChange, )),
-                          error_summary='Changes for model `{}` are not supported.'.format(model.id))
-    raise_errors_warnings(*validation.validate_model_changes(model),
-                          error_summary='Changes for model `{}` are invalid.'.format(model.id))
-    raise_errors_warnings(validation.validate_simulation_type(sim, (UniformTimeCourseSimulation, )),
-                          error_summary='{} `{}` is not supported.'.format(sim.__class__.__name__, sim.id))
-    raise_errors_warnings(*validation.validate_simulation(sim),
-                          error_summary='Simulation `{}` is invalid.'.format(sim.id))
-    raise_errors_warnings(*validation.validate_model(model, [], working_dir='.'),
-                          error_summary='Model `{}` is invalid.'.format(model.id),
-                          warning_summary='Model `{}` may be invalid.'.format(model.id))
+    if config.VALIDATE_SEDML:
+        raise_errors_warnings(validation.validate_task(task),
+                              error_summary='Task `{}` is invalid.'.format(task.id))
+        raise_errors_warnings(validation.validate_model_language(model.language, ModelLanguage.XPP),
+                              error_summary='Language for model `{}` is not supported.'.format(model.id))
+        raise_errors_warnings(validation.validate_model_change_types(model.changes, (ModelAttributeChange, )),
+                              error_summary='Changes for model `{}` are not supported.'.format(model.id))
+        raise_errors_warnings(*validation.validate_model_changes(model),
+                              error_summary='Changes for model `{}` are invalid.'.format(model.id))
+        raise_errors_warnings(validation.validate_simulation_type(sim, (UniformTimeCourseSimulation, )),
+                              error_summary='{} `{}` is not supported.'.format(sim.__class__.__name__, sim.id))
+        raise_errors_warnings(*validation.validate_simulation(sim),
+                              error_summary='Simulation `{}` is invalid.'.format(sim.id))
+
+    if config.VALIDATE_SEDML_MODELS:
+        raise_errors_warnings(*validation.validate_model(model, [], working_dir='.'),
+                              error_summary='Model `{}` is invalid.'.format(model.id),
+                              warning_summary='Model `{}` may be invalid.'.format(model.id))
 
     # read model
     _, _, xpp_sim = validate_model(model.source)
