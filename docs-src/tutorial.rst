@@ -19,12 +19,12 @@ BioSimulators-XPP can execute models encoded in XPP format.
 Simulation experiments (SED-ML, KISAO)
 ++++++++++++++++++++++++++++++++++++++
 
-BioSimulators-XPP can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs (XML XPaths for variables) supported by BioSimulators-XPP is available from the `BioSimulators registry <https://biosimulators.org/simulators/xpp>`_.
+BioSimulators-XPP can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs (names for variables) supported by BioSimulators-XPP is available from the `BioSimulators registry <https://biosimulators.org/simulators/xpp>`_.
 
 Example COMBINE/OMEX archives
 +++++++++++++++++++++++++++++
 
-Examples of COMBINE/OMEX archives for logical simulations which BioSimulators-XPP can execute are available in the `BioSimulators test suite <https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples>`_.
+Examples of COMBINE/OMEX archives for simulations which BioSimulators-XPP can execute are available in the `BioSimulators test suite <https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples>`_.
 
 
 Command-line program
