@@ -229,8 +229,8 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
             },
         },
     }),
-    ('KISAO_0000086', {
-        'kisao_id': 'KISAO_0000086',
+    ('KISAO_0000672', {
+        'kisao_id': 'KISAO_0000672',
         'id': 'qualrk',
         'name': " Quality 4th order Runge-Kutta method",
         'parameters': {

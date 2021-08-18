@@ -842,7 +842,7 @@
       "name": "Quality 4th order Runge-Kutta method",
       "kisaoId": {
         "namespace": "KISAO",
-        "id": "KISAO_0000086"
+        "id": "KISAO_0000672"
       },
       "modelingFrameworks": [{
         "namespace": "SBO",
