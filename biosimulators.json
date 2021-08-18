@@ -981,7 +981,17 @@
         "BioSimulators Docker image"
       ],
       "dependencies": null,
-      "citations": []
+      "citations": [{
+        "title": "Numerical Recipes in C",
+        "authors": "William H. Press, Saul A. Teukolsky, William T. Vetterling & Brian P. Flannery",
+        "pages": "719",
+        "year": 1992,
+        "identifiers": [{
+          "namespace": "doi",
+          "id": "10.5555/148286",
+          "url": "https://dl.acm.org/doi/10.5555/148286"
+        }]
+      }]
     },
     {
       "id": "modeuler",
@@ -1159,15 +1169,30 @@
       ],
       "dependencies": null,
       "citations": [{
-        "title": "Analytical and Numerical Methods for Volterra Equations",
-        "authors": "Peter Linz",
-        "year": 1985,
-        "identifiers": [{
-          "namespace": "doi",
-          "id": "10.1137/1.9781611970852",
-          "url": "https://doi.org/10.1137/1.9781611970852"
-        }]
-      }]
+          "title": "Numerical methods for Volterra integral equations of the first kind",
+          "authors": "Peter Linz",
+          "journal": "Computer Journal",
+          "volume": "12",
+          "issue": "4",
+          "pages": "393-397",
+          "year": 1969,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.1093/comjnl/12.4.393",
+            "url": "http://doi.org/10.1093/comjnl/12.4.393"
+          }]
+        },
+        {
+          "title": "Analytical and Numerical Methods for Volterra Equations",
+          "authors": "Peter Linz",
+          "year": 1985,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.1137/1.9781611970852",
+            "url": "https://doi.org/10.1137/1.9781611970852"
+          }]
+        }
+      ]
     },
     {
       "id": "stiff",
@@ -1262,7 +1287,26 @@
         "BioSimulators Docker image"
       ],
       "dependencies": null,
-      "citations": []
+      "citations": [{
+          "title": "Numerical Recipes in C",
+          "authors": "William H. Press, Saul A. Teukolsky, William T. Vetterling & Brian P. Flannery",
+          "pages": "739-741",
+          "year": 1992,
+          "identifiers": [{
+            "namespace": "doi",
+            "id": "10.5555/148286",
+            "url": "https://dl.acm.org/doi/10.5555/148286"
+          }]
+        },
+        {
+          "title": "Mathematical Software III",
+          "authors": "LF Shampine & HA and Watts",
+          "journal": "Applied Mathematics and Computation",
+          "volume": "5",
+          "year": 1977,
+          "identifiers": []
+        }
+      ]
     }
   ],
   "interfaceTypes": [
