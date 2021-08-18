@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial &#8212; BioSimulators-XPP 0.0.1 documentation</title>
+    <title>Tutorial &#8212; BioSimulators-XPP 0.0.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -121,17 +121,17 @@
 </div>
 <div class="section" id="simulation-experiments-sed-ml-kisao">
 <h3>Simulation experiments (SED-ML, KISAO)<a class="headerlink" href="#simulation-experiments-sed-ml-kisao" title="Permalink to this headline">¶</a></h3>
-<p>BioSimulators-XPP can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs (XML XPaths for variables) supported by BioSimulators-XPP is available from the <a class="reference external" href="https://biosimulators.org/simulators/xpp">BioSimulators registry</a>.</p>
+<p>BioSimulators-XPP can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs (names for variables) supported by BioSimulators-XPP is available from the <a class="reference external" href="https://biosimulators.org/simulators/xpp">BioSimulators registry</a>.</p>
 </div>
 <div class="section" id="example-combine-omex-archives">
 <h3>Example COMBINE/OMEX archives<a class="headerlink" href="#example-combine-omex-archives" title="Permalink to this headline">¶</a></h3>
-<p>Examples of COMBINE/OMEX archives for logical simulations which BioSimulators-XPP can execute are available in the <a class="reference external" href="https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples">BioSimulators test suite</a>.</p>
+<p>Examples of COMBINE/OMEX archives for simulations which BioSimulators-XPP can execute are available in the <a class="reference external" href="https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples">BioSimulators test suite</a>.</p>
 </div>
 </div>
 <div class="section" id="command-line-program">
 <h2>Command-line program<a class="headerlink" href="#command-line-program" title="Permalink to this headline">¶</a></h2>
 <p>The command-line program can be used to execute COMBINE/OMEX archives that describe simulations as illustrated below.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: xpp [-h] [-d] [-q] -i ARCHIVE [-o OUT_DIR] [-v]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: biosimulators-xpp [-h] [-d] [-q] -i ARCHIVE [-o OUT_DIR] [-v]
 
 BioSimulators-compliant command-line interface to the XPP &lt;http://www.math.pitt.edu/~bard/xpp/xpp.html&gt; simulation program.
 
