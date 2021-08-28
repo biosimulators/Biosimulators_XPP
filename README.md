@@ -63,7 +63,7 @@ docker run \
 ```
 
 ## Documentation
-Documentation is available at https://biosimulators.github.io/Biosimulators_XPP/.
+Documentation is available at https://docs.biosimulators.org/Biosimulators_XPP/.
 
 ## License
 This package is released under the [MIT license](LICENSE).
