@@ -12,17 +12,64 @@ Information about how to create COMBINE/OMEX archives which can be executed by B
 A list of the algorithms and algorithm parameters supported by XPP is available at `BioSimulators <https://biosimulators.org/simulators/xpp>`_.
 
 Models (XPP)
-++++++++++++++++++
+^^^^^^^^^^^^
 
-BioSimulators-XPP can execute models encoded in XPP format.
+BioSimulators-XPP can execute models encoded in XPP format (``urn:sedml:language:xpp``).
+
 
 Simulation experiments (SED-ML, KISAO)
-++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 BioSimulators-XPP can execute simulation experiments encoded in SED-ML, using KiSAO to indicate specific algorithms and their parameters. Information about the algorithms (KiSAO terms), algorithm parameters (KiSAO terms), and outputs (names for variables) supported by BioSimulators-XPP is available from the `BioSimulators registry <https://biosimulators.org/simulators/xpp>`_.
 
+
+Models (``sedml.Model``)
+""""""""""""""""""""""""
+
+Models should be specified using language URN ``urn:sedml:language:xpp``::
+
+    <model id="model" language="urn:sedml:language:xpp" source="model.ode" />
+
+
+Targets for model changes (``sedml.AttributeChange``)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+Targets for changes to model parameters should be encoded using the name of the parameter as ``target="parameters.{ parameter name }"`` such as ``target="parameters.k1"``. The names are parameters are not case sensitive.::
+
+    <attributeChange target="parameters.k1" newValue="0.1" />
+
+Targets for changes to initial conditions should be encoded using the name of the variable as ``target="initialConditions.{ variable name }"`` such as ``target="initialConditions.X"``. The names are variables are not case sensitive.::
+
+    <attributeChange target="initialConditions.X" newValue="10.0" />
+
+
+Simulations (``sedml.UniformTimeCourse``, ``sedml.Algorithm``)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Simulations should be encoded using the ``UniformTimeCourse`` class with simulation algorithms such as ``KISAO_0000019`` (CVODE) and algorithm parameters such as ``KISAO_0000209`` (relative tolerance). Information about the algorithm and algorithm parameter KiSAO terms recognized by BioSimulators-XPP is available from the `BioSimulators registry <https://biosimulators.org/simulators/xpp>`_.::
+
+    <uniformTimeCourse id="simulation">
+      <algorithm kisaoID="KISAO:0000019">
+         <algorithmParameter kisaoID="KISAO:0000209" newValue="1e-9" />
+      </algorithm>
+    </uniformTimeCourse>
+
+
+Targets for observables (``sedml.Variable`` of ``sedml.DataGenerator``)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Targets for XPP variables should be encoded using the name of the variable as ``target="{ variable name }"`` such as ``target="X"``. The names are variables are not case sensitive.::
+
+    <dataGenerator id="data_generator_X">
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <ci> variable_X </ci>
+      </math>
+      <listOfVariables>
+        <variable id="variable_X" target="X" taskReference="task"/>
+      </listOfVariables>
+    </dataGenerator>
+
+
 Example COMBINE/OMEX archives
-+++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Examples of COMBINE/OMEX archives for simulations which BioSimulators-XPP can execute are available in the `BioSimulators test suite <https://github.com/biosimulators/Biosimulators_test_suite/tree/deploy/examples>`_.
 
