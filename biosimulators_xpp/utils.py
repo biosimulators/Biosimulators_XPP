@@ -7,6 +7,7 @@
 """
 
 from .data_model import KISAO_ALGORITHM_MAP
+from biosimulators_utils.config import Config  # noqa: F401
 from biosimulators_utils.report.data_model import VariableResults
 from biosimulators_utils.sedml.data_model import ModelAttributeChange, UniformTimeCourseSimulation, Symbol, Variable  # noqa: F401
 from biosimulators_utils.simulator.utils import get_algorithm_substitution_policy
@@ -123,12 +124,13 @@ def apply_model_changes(xpp_model, sed_changes):
         raise ValueError(msg)
 
 
-def set_up_simulation(sed_sim, xpp_sim):
+def set_up_simulation(sed_sim, xpp_sim, config=None):
     """ Apply SED simulation settings to the configuration of a XPP simulation
 
     Args:
         sed_sim (:obj:`UniformTimeCourseSimulation`): SED simulation
         xpp_sim (:obj:`dict`): XPP simulation
+        config (:obj:`Config`, optional): configuration
 
     Returns:
         :obj:`str`: KiSAO id of the algorithm to execute
@@ -138,7 +140,7 @@ def set_up_simulation(sed_sim, xpp_sim):
     xpp_sim['dt'] = str((sed_sim.output_end_time - sed_sim.output_start_time) / sed_sim.number_of_points)
     xpp_sim['njmp'] = str(1)
 
-    substitution_policy = get_algorithm_substitution_policy()
+    substitution_policy = get_algorithm_substitution_policy(config=config)
     exec_kisao_id = get_preferred_substitute_algorithm_by_ids(
         sed_sim.algorithm.kisao_id, KISAO_ALGORITHM_MAP.keys(),
         substitution_policy=substitution_policy)

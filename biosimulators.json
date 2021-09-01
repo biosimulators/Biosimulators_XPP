@@ -26,6 +26,10 @@
     },
     "operatingSystemType": "Linux"
   },
+  "pythonApi": {
+    "package": "biosimulators-xpp",
+    "module": "biosimulators_xpp"
+  },
   "authors": [{
     "firstName": "G. Bard",
     "lastName": "Ermentrout",
@@ -36,7 +40,11 @@
     }]
   }],
   "references": {
-    "identifiers": [],
+    "identifiers": [{
+            "namespace": "pypi",
+            "id": "biosimulators-xpp",
+            "url": "https://pypi.org/project/biosimulators-xpp/"
+          }],
     "citations": [{
         "title": "XPPAUT",
         "authors": "Bard Ermentrout",
