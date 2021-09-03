@@ -97,7 +97,7 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     Args:
         task (:obj:`Task`): task
         variables (:obj:`list` of :obj:`Variable`): variables that should be recorded
-        preprocessed_task (:obj:`object`, optional): preprocessed information about the task, including possible
+        preprocessed_task (:obj:`dict`, optional): preprocessed information about the task, including possible
             model changes and variables. This can be used to avoid repeatedly executing the same initialization
             for repeated calls to this method.
         log (:obj:`TaskLog`, optional): log for the task
@@ -122,6 +122,49 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
 
     if preprocessed_task is None:
         preprocessed_task = preprocess_sed_task(task, variables, config=config)
+
+    # validate task
+    model = task.model
+    sim = task.simulation
+
+    # read model
+    xpp_sim = preprocessed_task['xpp_simulation']
+
+    # model changes
+    apply_model_changes(xpp_sim, model.changes)
+
+    # setup simulation
+    exec_kisao_id = preprocessed_task['algorithm_kisao_id']
+
+    # run simulation
+    raw_results = exec_xpp_simulation(model.source, xpp_sim)
+
+    # transform results
+    variable_results = get_results_of_sed_variables(sim, raw_results, variables)
+
+    # log action
+    if config.LOG:
+        log.algorithm = exec_kisao_id
+        log.simulator_details = xpp_sim['simulation_method']
+
+    ############################
+    # return the result of each variable and log
+    return variable_results, log
+
+
+def preprocess_sed_task(task, variables, config=None):
+    """ Preprocess a SED task, including its possible model changes and variables. This is useful for avoiding
+    repeatedly initializing tasks on repeated calls of :obj:`exec_sed_task`.
+
+    Args:
+        task (:obj:`Task`): task
+        variables (:obj:`list` of :obj:`Variable`): variables that should be recorded
+        config (:obj:`Config`, optional): BioSimulators common configuration
+
+    Returns:
+        :obj:`object`: preprocessed information about the task
+    """
+    config = config or get_config()
 
     # validate task
     model = task.model
@@ -152,41 +195,10 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     # validate observables
     validate_variables(xpp_sim, variables)
 
-    # model changes
-    apply_model_changes(xpp_sim, model.changes)
-
     # setup simulation
     exec_kisao_id = set_up_simulation(sim, xpp_sim['simulation_method'], config=config)
 
-    # run simulation
-    raw_results = exec_xpp_simulation(model.source, xpp_sim)
-
-    # transform results
-    variable_results = get_results_of_sed_variables(sim, raw_results, variables)
-
-    # log action
-    if config.LOG:
-        log.algorithm = exec_kisao_id
-        log.simulator_details = xpp_sim['simulation_method']
-
-    ############################
-    # return the result of each variable and log
-    return variable_results, log
-
-
-def preprocess_sed_task(task, variables, config=None):
-    """ Preprocess a SED task, including its possible model changes and variables. This is useful for avoiding
-    repeatedly initializing tasks on repeated calls of :obj:`exec_sed_task`.
-
-    Args:
-        task (:obj:`Task`): task
-        variables (:obj:`list` of :obj:`Variable`): variables that should be recorded
-        preprocessed_task (:obj:`PreprocessedTask`, optional): preprocessed information about the task, including possible
-            model changes and variables. This can be used to avoid repeatedly executing the same initialization for repeated
-            calls to this method.
-        config (:obj:`Config`, optional): BioSimulators common configuration
-
-    Returns:
-        :obj:`object`: preprocessed information about the task
-    """
-    pass
+    return {
+        'xpp_simulation': xpp_sim,
+        'algorithm_kisao_id': exec_kisao_id,
+    }
