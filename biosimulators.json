@@ -28,7 +28,8 @@
   },
   "pythonApi": {
     "package": "biosimulators-xpp",
-    "module": "biosimulators_xpp"
+    "module": "biosimulators_xpp",
+      "installationInstructions": "https://docs.biosimulators.org/Biosimulators_XPP/installation.html"
   },
   "authors": [{
     "firstName": "G. Bard",
