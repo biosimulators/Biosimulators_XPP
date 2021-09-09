@@ -8,6 +8,7 @@
 
 from .data_model import KISAO_ALGORITHM_MAP
 from biosimulators_utils.config import Config  # noqa: F401
+from biosimulators_utils.model_lang.xpp.validation import get_xpp_input_configuration_from_directory
 from biosimulators_utils.report.data_model import VariableResults
 from biosimulators_utils.sedml.data_model import ModelAttributeChange, UniformTimeCourseSimulation, Symbol, Variable  # noqa: F401
 from biosimulators_utils.simulator.utils import get_algorithm_substitution_policy
