@@ -26,7 +26,12 @@ BioSimulators-XPP can execute simulation experiments encoded in SED-ML, using Ki
 Models (``sedml.Model``)
 """"""""""""""""""""""""
 
-Models should be specified using language URN ``urn:sedml:language:xpp``::
+Models should be specified using language URN ``urn:sedml:language:xpp``. Model sources can be specified in two ways:
+
+* Path to ``.ode`` files.
+* Directories which contain ``.ode`` and optionally set (``.set``), parameter (``.par``), and/or initial conditions (``.ic``) files. ``.set``, ``.par``, and ``.ic`` files can have any filename that ends in these extensions. Directories should contain at most one of each of these three types of files. If supplied, the content of``.set`` files first overrides ``.ode`` files and then ``.par`` and ``.ic`` files can further override definitions of models.
+
+.. code-block:: text
 
     <model id="model" language="urn:sedml:language:xpp" source="model.ode" />
 
