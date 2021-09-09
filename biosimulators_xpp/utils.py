@@ -230,6 +230,7 @@ def write_method_to_xpp_simulation_file(simulation_method, in_filename, out_file
 
 
 def exec_xpp_simulation(sim_filename, simulation,
+                        set_filename=None,
                         overwrite_parameters=True,
                         overwrite_initial_conditions=True,
                         overwrite_method=True):
@@ -238,6 +239,7 @@ def exec_xpp_simulation(sim_filename, simulation,
     Args:
         sim_filename (:obj:`str`): path to the XPP file
         simulation (:obj:`dict`): simulation parameters, initial conditions, and method to override defaults
+        set_filename (:obj:`str`, optional): path to XPP set file
         overwrite_parameters (:obj:`bool`, optional): whether to overwrite the default parameters
         overwrite_initial_conditions (:obj:`bool`, optional): whether to overwrite the default initial conditions
         overwrite_method (:obj:`bool`, optional): whether to overwrite the default simulation method and its settings
@@ -245,10 +247,17 @@ def exec_xpp_simulation(sim_filename, simulation,
     Returns:
         :obj:`pandas.DataFrame`: simulation results
     """
+    if sim_filename and os.path.isdir(sim_filename):
+        sim_filename, temp_set_filename, _, _ = get_xpp_input_configuration_from_directory(sim_filename)
+        set_filename = set_filename or temp_set_filename
+
     # set up XPP command
     fid, out_filename = tempfile.mkstemp(suffix='.dat')
     os.close(fid)
     cmd = ["xppaut", sim_filename, '-silent', '-outfile', out_filename]
+    if set_filename:
+        cmd.append('-setfile')
+        cmd.append(set_filename)
 
     # write parameters and initial conditions to files
     if overwrite_parameters:

@@ -129,12 +129,18 @@ class UtilsTestCase(unittest.TestCase):
             'meth': 'cvode',
             'toler': '1e-8',
             'atoler': '1e-6',
-            'xp': 'u',
-            'yp': 'v',
-            'xlo': '-.1',
-            'xhi': '1',
-            'ylo': '-.1',
-            'yhi': '1',
+        })
+        self.assertEqual(xpp_sim['plot'], {
+            'elements': {
+                1: {
+                    'x': 'U',
+                    'y': 'V',
+                },
+            },
+            'xlo': -.1,
+            'xhi': 1,
+            'ylo': -.1,
+            'yhi': 1,
         })
 
         utils.set_up_simulation(sed_sim, xpp_sim['simulation_method'])
@@ -157,12 +163,6 @@ class UtilsTestCase(unittest.TestCase):
             'dt': '1.0',
             'njmp': '1',
             'meth': 'rungekutta',
-            'xp': 'u',
-            'yp': 'v',
-            'xlo': '-.1',
-            'xhi': '1',
-            'ylo': '-.1',
-            'yhi': '1',
         })
 
         # algorithm substitution
@@ -193,12 +193,6 @@ class UtilsTestCase(unittest.TestCase):
             'dt': '1.0',
             'njmp': '1',
             'meth': 'rungekutta',
-            'xp': 'u',
-            'yp': 'v',
-            'xlo': '-.1',
-            'xhi': '1',
-            'ylo': '-.1',
-            'yhi': '1',
         })
 
         # algorithm substitution - parameters
@@ -258,12 +252,18 @@ class UtilsTestCase(unittest.TestCase):
 
         self.assertEqual(model['simulation_method'], {
             'total': '40',
-            'xp': 'u',
-            'yp': 'v',
-            'xlo': '-.1',
-            'xhi': '1',
-            'ylo': '-.1',
-            'yhi': '1',
+        })
+        self.assertEqual(model['plot'], {
+            'elements': {
+                1: {
+                    'x': 'U',
+                    'y': 'V',
+                },
+            },
+            'xlo': -.1,
+            'xhi': 1,
+            'ylo': -.1,
+            'yhi': 1,
         })
         self.assertEqual(model2['simulation_method'], {
             'meth': 'cvode',
