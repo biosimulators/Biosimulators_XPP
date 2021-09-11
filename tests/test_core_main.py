@@ -82,6 +82,7 @@ class CliTestCase(unittest.TestCase):
         for variable_result in variable_results.values():
             self.assertFalse(numpy.any(numpy.isnan(variable_result)))
         numpy.testing.assert_allclose(variable_results['Time'], numpy.linspace(0., 10., 10 + 1))
+        numpy.testing.assert_allclose(variable_results['u'][0], 0.1)
 
         # check that log can be serialized to JSON
         json.dumps(log.to_json())
@@ -91,6 +92,18 @@ class CliTestCase(unittest.TestCase):
         with open(os.path.join(self.dirname, get_config().LOG_PATH), 'rb') as file:
             log_data = yaml.load(file, Loader=yaml.Loader)
         json.dumps(log_data)
+
+        #
+        task.model.changes.append(sedml_data_model.ModelAttributeChange(
+            target='initialConditions.U',
+            new_value='0.2',
+        ))
+        variable_results_2, log = core.exec_sed_task(task, variables)
+        numpy.testing.assert_allclose(variable_results_2['u'][0], 0.2)
+
+        task.model.changes[0].new_value = 0.3
+        variable_results_2, log = core.exec_sed_task(task, variables)
+        numpy.testing.assert_allclose(variable_results_2['u'][0], 0.3)
 
     def test_exec_sedml_docs_in_combine_archive_successfully(self):
         doc, archive_filename = self._build_combine_archive()

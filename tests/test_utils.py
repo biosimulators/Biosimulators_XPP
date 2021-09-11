@@ -84,6 +84,15 @@ class UtilsTestCase(unittest.TestCase):
         self.assertEqual(xpp_model['initial_conditions']['U'], '0.25')
 
         sed_model_changes = [
+            ModelAttributeChange(target='parameters.AEE', new_value=14),
+            ModelAttributeChange(target='initialConditions.u', new_value=0.25),
+        ]
+        utils.apply_model_changes(xpp_model, sed_model_changes)
+
+        self.assertEqual(xpp_model['parameters']['aee'], 14)
+        self.assertEqual(xpp_model['initial_conditions']['U'], 0.25)
+
+        sed_model_changes = [
             ModelAttributeChange(target='unknown.AEE', new_value='13'),
         ]
         with self.assertRaises(ValueError):
@@ -221,6 +230,13 @@ class UtilsTestCase(unittest.TestCase):
     def test_write_xpp_parameter_file(self):
         filename = os.path.join(self.dirname, 'model.par')
         utils.write_xpp_parameter_file({
+            'aee': '10',
+            'aie': '8',
+        }, filename)
+        self.assertTrue(os.path.isfile(filename))
+
+        filename = os.path.join(self.dirname, 'model2.par')
+        utils.write_xpp_parameter_file({
             'aee': 10,
             'aie': 8,
         }, filename)
@@ -228,6 +244,13 @@ class UtilsTestCase(unittest.TestCase):
 
     def test_write_xpp_initial_conditions_file(self):
         filename = os.path.join(self.dirname, 'model.ic')
+        utils.write_xpp_initial_conditions_file({
+            'U': '0.2',
+            'V': '0.1',
+        }, filename)
+        self.assertTrue(os.path.isfile(filename))
+
+        filename = os.path.join(self.dirname, 'model2.ic')
         utils.write_xpp_initial_conditions_file({
             'U': 0.2,
             'V': 0.1,
