@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial &#8212; BioSimulators-XPP 0.0.7 documentation</title>
+    <title>Tutorial &#8212; BioSimulators-XPP 0.0.8 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -283,12 +283,12 @@
 </div>
 <div class="section" id="targets-for-model-changes-sedml-attributechange">
 <h4>Targets for model changes (<code class="docutils literal notranslate"><span class="pre">sedml.AttributeChange</span></code>)<a class="headerlink" href="#targets-for-model-changes-sedml-attributechange" title="Permalink to this headline">¶</a></h4>
-<p>Targets for changes to model parameters should be encoded using the name of the parameter as <code class="docutils literal notranslate"><span class="pre">target=&quot;parameters.{</span> <span class="pre">parameter</span> <span class="pre">name</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;parameters.k1&quot;</span></code>. The names are parameters are not case sensitive.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">attributeChange</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;parameters.k1&quot;</span> <span class="n">newValue</span><span class="o">=</span><span class="s2">&quot;0.1&quot;</span> <span class="o">/&gt;</span>
+<p>Targets for changes to model parameters should be encoded using the name of the parameter as <code class="docutils literal notranslate"><span class="pre">target=&quot;{</span> <span class="pre">parameter</span> <span class="pre">name</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;k1&quot;</span></code>. The names are parameters are not case sensitive.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">attributeChange</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;k1&quot;</span> <span class="n">newValue</span><span class="o">=</span><span class="s2">&quot;0.1&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
-<p>Targets for changes to initial conditions should be encoded using the name of the variable as <code class="docutils literal notranslate"><span class="pre">target=&quot;initialConditions.{</span> <span class="pre">variable</span> <span class="pre">name</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;initialConditions.X&quot;</span></code>. The names are variables are not case sensitive.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">attributeChange</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;initialConditions.X&quot;</span> <span class="n">newValue</span><span class="o">=</span><span class="s2">&quot;10.0&quot;</span> <span class="o">/&gt;</span>
+<p>Targets for changes to initial conditions should be encoded using the name of the variable as <code class="docutils literal notranslate"><span class="pre">target=&quot;{</span> <span class="pre">variable</span> <span class="pre">name</span> <span class="pre">}&quot;</span></code> such as <code class="docutils literal notranslate"><span class="pre">target=&quot;X&quot;</span></code>. The names are variables are not case sensitive.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">attributeChange</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;X&quot;</span> <span class="n">newValue</span><span class="o">=</span><span class="s2">&quot;10.0&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
 </div>
