@@ -95,7 +95,7 @@ class CliTestCase(unittest.TestCase):
 
         #
         task.model.changes.append(sedml_data_model.ModelAttributeChange(
-            target='initialConditions.U',
+            target='U',
             new_value='0.2',
         ))
         variable_results_2, log = core.exec_sed_task(task, variables)

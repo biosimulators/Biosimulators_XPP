@@ -38,13 +38,13 @@ Models should be specified using language URN ``urn:sedml:language:xpp``. Model 
 
 Targets for model changes (``sedml.AttributeChange``)
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-Targets for changes to model parameters should be encoded using the name of the parameter as ``target="parameters.{ parameter name }"`` such as ``target="parameters.k1"``. The names are parameters are not case sensitive.::
+Targets for changes to model parameters should be encoded using the name of the parameter as ``target="{ parameter name }"`` such as ``target="k1"``. The names are parameters are not case sensitive.::
 
-    <attributeChange target="parameters.k1" newValue="0.1" />
+    <attributeChange target="k1" newValue="0.1" />
 
-Targets for changes to initial conditions should be encoded using the name of the variable as ``target="initialConditions.{ variable name }"`` such as ``target="initialConditions.X"``. The names are variables are not case sensitive.::
+Targets for changes to initial conditions should be encoded using the name of the variable as ``target="{ variable name }"`` such as ``target="X"``. The names are variables are not case sensitive.::
 
-    <attributeChange target="initialConditions.X" newValue="10.0" />
+    <attributeChange target="X" newValue="10.0" />
 
 
 Simulations (``sedml.UniformTimeCourse``, ``sedml.Algorithm``)

@@ -91,13 +91,24 @@
         "id": "format_9010",
         "version": null,
         "supportedFeatures": []
-      }],
+      }],      
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -121,11 +132,27 @@
           "BioSimulators Docker image"
         ]
       }],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -165,12 +192,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }    
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -178,11 +216,27 @@
         "supportedFeatures": []
       }],
       "parameters": [],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -209,12 +263,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -250,11 +315,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -281,12 +362,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -294,11 +386,27 @@
         "supportedFeatures": []
       }],
       "parameters": [],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -325,12 +433,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -389,11 +508,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -420,12 +555,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -467,11 +613,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -498,12 +660,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -545,11 +718,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -576,12 +765,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -657,11 +857,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -688,12 +904,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -769,11 +996,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -819,12 +1062,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -832,11 +1086,27 @@
         "supportedFeatures": []
       }],
       "parameters": [],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -863,12 +1133,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -978,11 +1259,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -1019,12 +1316,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -1032,11 +1340,27 @@
         "supportedFeatures": []
       }],
       "parameters": [],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -1063,12 +1387,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -1076,11 +1411,27 @@
         "supportedFeatures": []
       }],
       "parameters": [],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -1107,12 +1458,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -1165,11 +1527,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",
@@ -1220,12 +1598,23 @@
         "version": null,
         "supportedFeatures": []
       }],
+      "modelChangePatterns": [
+        {
+          "name": "Change parameter values or variable initial conditions",
+          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+          "target": {
+            "value": "{ parameter or variable name }",
+            "grammar": "XPP"
+          }
+        }     
+      ],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
         "version": "L1V3",
         "supportedFeatures": []
       }],
+      "simulationTypes": ["SedUniformTimeCourseSimulation"],
       "archiveFormats": [{
         "namespace": "EDAM",
         "id": "format_3686",
@@ -1284,11 +1673,27 @@
           ]
         }
       ],
-      "dependentDimensions": [{
+      "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "dependentVariableTargetPatterns": [],
+      "outputVariablePatterns": [
+        {
+          "name": "variable of integration (time)",
+          "symbol": {
+                    "value": "time",
+                    "namespace": "urn:sedml:symbol"
+                  }
+        },
+        {
+          "name": "variables",
+          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+        },
+        {
+          "name": "auxiliary variables",
+          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+        }
+      ],
       "availableSoftwareInterfaceTypes": [
         "desktop application",
         "library",

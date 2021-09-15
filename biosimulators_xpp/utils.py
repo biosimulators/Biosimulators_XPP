@@ -68,7 +68,8 @@ def validate_variables(xpp_model, sed_variables):
                 invalid_symbols.append(sed_variable.symbol)
 
         else:
-            if sed_variable.target.upper() not in xpp_model['initial_conditions']:
+            target = sed_variable.target.upper()
+            if target not in xpp_model['initial_conditions'] and target not in xpp_model['auxiliary_variables']:
                 invalid_targets.append(sed_variable.target)
 
     if invalid_symbols:
@@ -81,7 +82,7 @@ def validate_variables(xpp_model, sed_variables):
     if invalid_targets:
         msg = 'The following targets are not supported:\n  {}\n\nThe following targets are supported:\n  {}'.format(
             '\n  - '.join(sorted(invalid_targets)),
-            '\n  - '.join(sorted(xpp_model['initial_conditions'].keys())),
+            '\n  - '.join(sorted(list(xpp_model['initial_conditions'].keys()) + list(xpp_model['auxiliary_variables'].keys()))),
         )
         raise ValueError(msg)
 
@@ -95,31 +96,26 @@ def apply_model_changes(xpp_model, sed_changes):
     """
     invalid_targets = []
     for change in sed_changes:
-        type, sep, target = change.target.partition('.')
-
-        if type == 'parameters':
+        if change.target.lower() in xpp_model['parameters']:
             block = xpp_model['parameters']
-            target = target.lower()
+            target = change.target.lower()
 
-        elif type == 'initialConditions':
+        elif change.target.upper() in xpp_model['initial_conditions']:
             block = xpp_model['initial_conditions']
-            target = target.upper()
+            target = change.target.upper()
 
         else:
             invalid_targets.append(change.target)
             continue
 
-        if target in block:
-            block[target] = change.new_value
-        else:
-            invalid_targets.append(change.target)
+        block[target] = change.new_value
 
     if invalid_targets:
         msg = 'Model changes with the following targets could not be executed:\n  {}\n\nThe following targets are supported:\n  {}'.format(
             '\n  - '.join(sorted(invalid_targets)),
             '\n  - '.join(sorted(
-                ['parameters.{}'.format(param) for param in xpp_model['parameters'].keys()] +
-                ['initialConditions.{}'.format(var) for var in xpp_model['initial_conditions'].keys()]
+                list(xpp_model['parameters'].keys()) +
+                list(xpp_model['initial_conditions'].keys())
             ))
         )
         raise ValueError(msg)

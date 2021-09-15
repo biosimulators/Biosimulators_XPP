@@ -42,6 +42,8 @@ class UtilsTestCase(unittest.TestCase):
                 'U': 0.1,
                 'V': 0.05,
             },
+            'auxiliary_variables': {
+            },
         }
 
         vars = [
@@ -66,8 +68,8 @@ class UtilsTestCase(unittest.TestCase):
         _, _, xpp_model = validate_model(filename)
 
         sed_model_changes = [
-            ModelAttributeChange(target='parameters.aee', new_value='12'),
-            ModelAttributeChange(target='initialConditions.U', new_value='0.2'),
+            ModelAttributeChange(target='aee', new_value='12'),
+            ModelAttributeChange(target='U', new_value='0.2'),
         ]
         utils.apply_model_changes(xpp_model, sed_model_changes)
 
@@ -75,8 +77,8 @@ class UtilsTestCase(unittest.TestCase):
         self.assertEqual(xpp_model['initial_conditions']['U'], '0.2')
 
         sed_model_changes = [
-            ModelAttributeChange(target='parameters.AEE', new_value='14'),
-            ModelAttributeChange(target='initialConditions.u', new_value='0.25'),
+            ModelAttributeChange(target='AEE', new_value='14'),
+            ModelAttributeChange(target='u', new_value='0.25'),
         ]
         utils.apply_model_changes(xpp_model, sed_model_changes)
 
@@ -84,8 +86,8 @@ class UtilsTestCase(unittest.TestCase):
         self.assertEqual(xpp_model['initial_conditions']['U'], '0.25')
 
         sed_model_changes = [
-            ModelAttributeChange(target='parameters.AEE', new_value=14),
-            ModelAttributeChange(target='initialConditions.u', new_value=0.25),
+            ModelAttributeChange(target='AEE', new_value=14),
+            ModelAttributeChange(target='u', new_value=0.25),
         ]
         utils.apply_model_changes(xpp_model, sed_model_changes)
 
@@ -93,19 +95,7 @@ class UtilsTestCase(unittest.TestCase):
         self.assertEqual(xpp_model['initial_conditions']['U'], 0.25)
 
         sed_model_changes = [
-            ModelAttributeChange(target='unknown.AEE', new_value='13'),
-        ]
-        with self.assertRaises(ValueError):
-            utils.apply_model_changes(xpp_model, sed_model_changes)
-
-        sed_model_changes = [
-            ModelAttributeChange(target='parameters.unknown', new_value='13'),
-        ]
-        with self.assertRaises(ValueError):
-            utils.apply_model_changes(xpp_model, sed_model_changes)
-
-        sed_model_changes = [
-            ModelAttributeChange(target='initialConditionss.unknown', new_value='13'),
+            ModelAttributeChange(target='unknown', new_value='13'),
         ]
         with self.assertRaises(ValueError):
             utils.apply_model_changes(xpp_model, sed_model_changes)
