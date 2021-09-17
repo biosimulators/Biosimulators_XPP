@@ -162,7 +162,7 @@ def preprocess_sed_task(task, variables, config=None):
         config (:obj:`Config`, optional): BioSimulators common configuration
 
     Returns:
-        :obj:`object`: preprocessed information about the task
+        :obj:`dict`: preprocessed information about the task
     """
     config = config or get_config()
 
