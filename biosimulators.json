@@ -26,6 +26,12 @@
     },
     "operatingSystemType": "Linux"
   },
+  "cli": {
+    "packageRepository": "PyPI",
+    "package": "biosimulators-xpp",
+    "command": "biosimulators-xpp",
+    "installationInstructions": "https://docs.biosimulators.org/Biosimulators_XPP/installation.html"
+  },
   "pythonApi": {
     "package": "biosimulators-xpp",
     "module": "biosimulators_xpp",
