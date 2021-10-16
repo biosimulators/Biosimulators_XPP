@@ -13,12 +13,22 @@
       "contributions": [
         "code"
       ]
-    }   
+    },
+    {
+      "login": "Ermentrout",
+      "name": "Ermentrout",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7952422?v=4",
+      "profile": "https://github.com/Ermentrout",
+      "contributions": [
+        "tool"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "Biosimulators_XPP",
   "projectOwner": "biosimulators",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "none"
 }
