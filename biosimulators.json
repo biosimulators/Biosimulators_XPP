@@ -170,8 +170,8 @@
         "title": "Exact stochastic simulation of coupled chemical reactions",
         "authors": "Daniel T. Gillespie",
         "journal": "Journal of Physical Chemistry",
-        "volume": 81,
-        "issue": 25,
+        "volume": "81",
+        "issue": "25",
         "pages": "2340-2361",
         "year": 1977,
         "identifiers": [{
@@ -1040,8 +1040,8 @@
         "title": "CVODE, a stiff/nonstiff ODE solver in C",
         "authors": "Scott D. Cohen, Alan C. Hindmarsh & Paul F. Dubois",
         "journal": "Computers in Physics",
-        "volume": 10,
-        "issue": 2,
+        "volume": "10",
+        "issue": "2",
         "pages": "138-143",
         "year": 1996,
         "identifiers": [{
