@@ -133,6 +133,8 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
         :obj:`str`: KiSAO id of the algorithm to execute
     """
     xpp_sim['t0'] = str(sed_sim.initial_time)
+    if sed_sim.output_start_time != sed_sim.initial_time:
+        xpp_sim['trans'] = str(sed_sim.output_start_time)
     xpp_sim['total'] = str(sed_sim.output_end_time - sed_sim.initial_time)
     xpp_sim['dt'] = str((sed_sim.output_end_time - sed_sim.output_start_time) / sed_sim.number_of_points)
     xpp_sim['njmp'] = str(1)
@@ -274,7 +276,12 @@ def exec_xpp_simulation(sim_filename, simulation,
     if overwrite_method:
         fid, temp_sim_filename = tempfile.mkstemp(suffix='.ode')
         os.close(fid)
-        write_method_to_xpp_simulation_file(simulation['simulation_method'], sim_filename, temp_sim_filename)
+        options = {
+            **simulation['simulation_method'],
+            **(simulation.get('other_numerics', None) or {}),
+            **(simulation.get('other', None) or {}),
+        }
+        write_method_to_xpp_simulation_file(options, sim_filename, temp_sim_filename)
         cmd[1] = temp_sim_filename
 
     # execute simulation
@@ -302,8 +309,13 @@ def exec_xpp_simulation(sim_filename, simulation,
         os.remove(temp_sim_filename)
 
     # raise exception if XPP failed
-    if result.returncode != 0:
-        raise RuntimeError('XPP failed: {}'.format(result.stdout.decode("utf-8")))
+    stdout = result.stdout.decode("utf-8")
+    if (
+        result.returncode != 0
+        or 'Integration not completed' in stdout
+        or 'out of bounds' in stdout
+    ):
+        raise RuntimeError('XPP failed: {}'.format(stdout))
 
     # return results
     return results

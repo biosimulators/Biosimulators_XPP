@@ -10,7 +10,7 @@ from .utils import validate_variables, apply_model_changes, set_up_simulation, e
 from biosimulators_utils.combine.exec import exec_sedml_docs_in_archive
 from biosimulators_utils.config import get_config, Config  # noqa: F401
 from biosimulators_utils.log.data_model import CombineArchiveLog, TaskLog, StandardOutputErrorCapturerLevel  # noqa: F401
-from biosimulators_utils.model_lang.xpp.validation import validate_model
+from biosimulators_utils.model_lang.xpp.validation import validate_model, sanitize_model
 from biosimulators_utils.report.data_model import ReportFormat, SedDocumentResults  # noqa: F401
 from biosimulators_utils.sedml import validation
 from biosimulators_utils.sedml.data_model import (Task, ModelLanguage, ModelAttributeChange,  # noqa: F401
@@ -137,7 +137,7 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     exec_kisao_id = preprocessed_task['algorithm_kisao_id']
 
     # run simulation
-    raw_results = exec_xpp_simulation(model.source, xpp_sim)
+    raw_results = exec_xpp_simulation(preprocessed_task['model_filename'], xpp_sim)
 
     # transform results
     variable_results = get_results_of_sed_variables(sim, raw_results, variables)
@@ -192,6 +192,10 @@ def preprocess_sed_task(task, variables, config=None):
     # read model
     _, _, xpp_sim = validate_model(model.source)
 
+    # sanitize model file
+    exclude_options = ['output', 'range', 'rangeover', 'rangelow', 'rangehigh', 'rangestep', 'rangereset', 'rangeoldic']
+    sanitized_filename = sanitize_model(model.source, keep_only_directives=False, exclude_options=exclude_options)
+
     # validate observables
     validate_variables(xpp_sim, variables)
 
@@ -199,6 +203,7 @@ def preprocess_sed_task(task, variables, config=None):
     exec_kisao_id = set_up_simulation(sim, xpp_sim['simulation_method'], config=config)
 
     return {
+        'model_filename': sanitized_filename,
         'xpp_simulation': xpp_sim,
         'algorithm_kisao_id': exec_kisao_id,
     }

@@ -122,6 +122,7 @@ class UtilsTestCase(unittest.TestCase):
 
         self.assertEqual(xpp_sim['simulation_method'], {
             't0': '10.0',
+            'trans': '20.0',
             'total': '20.0',
             'dt': '1.0',
             'njmp': '1',
@@ -158,6 +159,7 @@ class UtilsTestCase(unittest.TestCase):
         utils.set_up_simulation(sed_sim, xpp_sim['simulation_method'])
         self.assertEqual(xpp_sim['simulation_method'], {
             't0': '10.0',
+            'trans': '20.0',
             'total': '20.0',
             'dt': '1.0',
             'njmp': '1',
@@ -188,6 +190,7 @@ class UtilsTestCase(unittest.TestCase):
 
         self.assertEqual(xpp_sim['simulation_method'], {
             't0': '10.0',
+            'trans': '20.0',
             'total': '20.0',
             'dt': '1.0',
             'njmp': '1',
@@ -336,13 +339,14 @@ class UtilsTestCase(unittest.TestCase):
 
         utils.set_up_simulation(sed_sim, xpp_sim['simulation_method'])
         self.assertEqual(xpp_sim['simulation_method']['t0'], '10.0')
+        self.assertEqual(xpp_sim['simulation_method']['trans'], '20.0')
         self.assertEqual(xpp_sim['simulation_method']['total'], '20.0')
         self.assertEqual(xpp_sim['simulation_method']['dt'], '0.5')
         self.assertEqual(xpp_sim['simulation_method']['njmp'], '1')
 
         xpp_results = utils.exec_xpp_simulation(filename, xpp_sim)
         numpy.testing.assert_allclose(xpp_results.loc[:, Symbol.time.value],
-                                      numpy.linspace(10., 30., 40 + 1))
+                                      numpy.linspace(20., 30., 20 + 1))
 
         sed_vars = [
             Variable(id='time', symbol=Symbol.time.value),

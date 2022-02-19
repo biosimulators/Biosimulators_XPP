@@ -105,6 +105,45 @@ class CliTestCase(unittest.TestCase):
         variable_results_2, log = core.exec_sed_task(task, variables)
         numpy.testing.assert_allclose(variable_results_2['u'][0], 0.3)
 
+        # output start time > initial time
+        task = sedml_data_model.Task(
+            model=sedml_data_model.Model(
+                source=self.EXAMPLE_MODEL_FILENAME,
+                language=sedml_data_model.ModelLanguage.XPP.value,
+            ),
+            simulation=sedml_data_model.UniformTimeCourseSimulation(
+                initial_time=0.,
+                output_start_time=5.,
+                output_end_time=10.,
+                number_of_points=10,
+                algorithm=sedml_data_model.Algorithm(
+                    kisao_id='KISAO_0000019',
+                ),
+            ),
+        )
+
+        variables = [
+            sedml_data_model.Variable(
+                id='Time',
+                symbol=sedml_data_model.Symbol.time,
+                task=task),
+            sedml_data_model.Variable(
+                id='u',
+                target="u",
+                task=task),
+            sedml_data_model.Variable(
+                id='v',
+                target="v",
+                task=task),
+        ]
+
+        variable_results_3, log = core.exec_sed_task(task, variables)
+        self.assertEqual(set(variable_results_3.keys()), set(['Time', 'u', 'v']))
+        for variable_result in variable_results_3.values():
+            self.assertFalse(numpy.any(numpy.isnan(variable_result)))
+        numpy.testing.assert_allclose(variable_results_3['Time'], numpy.linspace(5., 10., 10 + 1))
+        numpy.testing.assert_allclose(variable_results_3['u'][0], variable_results['u'][5], rtol=1e-4)
+
     def test_exec_sedml_docs_in_combine_archive_successfully(self):
         doc, archive_filename = self._build_combine_archive()
 
