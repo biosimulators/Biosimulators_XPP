@@ -60,6 +60,9 @@ def validate_variables(xpp_model, sed_variables):
         xpp_model (:obj:`dict`): XPP model
         sed_variables (:obj:`list` of :obj:`Variable`): SED variables
     """
+    variable_ids = [key.upper() for key in xpp_model['initial_conditions'].keys()]
+    aux_variable_ids = [key.upper() for key in xpp_model['auxiliary_variables'].keys()]
+
     invalid_symbols = []
     invalid_targets = []
     for sed_variable in sed_variables:
@@ -69,7 +72,7 @@ def validate_variables(xpp_model, sed_variables):
 
         else:
             target = sed_variable.target.upper()
-            if target not in xpp_model['initial_conditions'] and target not in xpp_model['auxiliary_variables']:
+            if target not in variable_ids and target not in aux_variable_ids:
                 invalid_targets.append(sed_variable.target)
 
     if invalid_symbols:
@@ -94,15 +97,32 @@ def apply_model_changes(xpp_model, sed_changes):
         xpp_model (:obj:`dict`): XPP model
         sed_changes (:obj:`list` of :obj:`ModelAttributeChange`): SED model attribute changes
     """
+    print('\n'.join(xpp_model['parameters'].keys()))
+    print('\n\n')
+    print('\n'.join(xpp_model['initial_conditions'].keys()))
+
+    parameter_ids = [key.lower() for key in xpp_model['parameters'].keys()]
+    variable_ids = [key.upper() for key in xpp_model['initial_conditions'].keys()]
+
     invalid_targets = []
     for change in sed_changes:
-        if change.target.lower() in xpp_model['parameters']:
+        if change.target.lower() in parameter_ids:
             block = xpp_model['parameters']
             target = change.target.lower()
 
-        elif change.target.upper() in xpp_model['initial_conditions']:
+            for existing_target in block.keys():
+                if existing_target.lower() == target:
+                    target = existing_target
+                    break
+
+        elif change.target.upper() in variable_ids:
             block = xpp_model['initial_conditions']
             target = change.target.upper()
+
+            for existing_target in block.keys():
+                if existing_target.upper() == target:
+                    target = existing_target
+                    break
 
         else:
             invalid_targets.append(change.target)
