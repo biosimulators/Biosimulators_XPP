@@ -97,10 +97,6 @@ def apply_model_changes(xpp_model, sed_changes):
         xpp_model (:obj:`dict`): XPP model
         sed_changes (:obj:`list` of :obj:`ModelAttributeChange`): SED model attribute changes
     """
-    print('\n'.join(xpp_model['parameters'].keys()))
-    print('\n\n')
-    print('\n'.join(xpp_model['initial_conditions'].keys()))
-
     parameter_ids = [key.lower() for key in xpp_model['parameters'].keys()]
     variable_ids = [key.upper() for key in xpp_model['initial_conditions'].keys()]
 
