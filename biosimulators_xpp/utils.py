@@ -73,14 +73,14 @@ def validate_variables(xpp_model, sed_variables):
                 invalid_targets.append(sed_variable.target)
 
     if invalid_symbols:
-        msg = 'The following symbols are not supported:\n  {}\n\nThe following symbols are supported:\n  {}'.format(
+        msg = 'The following symbols are not supported:\n  - {}\n\nThe following symbols are supported:\n  - {}'.format(
             '\n  - '.join(sorted(invalid_symbols)),
-            '  - ' + Symbol.time.value,
+            '\n  - '.join([Symbol.time.value]),
         )
         raise NotImplementedError(msg)
 
     if invalid_targets:
-        msg = 'The following targets are not supported:\n  {}\n\nThe following targets are supported:\n  {}'.format(
+        msg = 'The following targets are not supported:\n  - {}\n\nThe following targets are supported:\n  - {}'.format(
             '\n  - '.join(sorted(invalid_targets)),
             '\n  - '.join(sorted(list(xpp_model['initial_conditions'].keys()) + list(xpp_model['auxiliary_variables'].keys()))),
         )
@@ -111,7 +111,10 @@ def apply_model_changes(xpp_model, sed_changes):
         block[target] = change.new_value
 
     if invalid_targets:
-        msg = 'Model changes with the following targets could not be executed:\n  {}\n\nThe following targets are supported:\n  {}'.format(
+        msg = (
+            'Model changes with the following targets could not be executed:\n  - {}\n\n'
+            'The following targets are supported:\n  - {}'
+        ).format(
             '\n  - '.join(sorted(invalid_targets)),
             '\n  - '.join(sorted(
                 list(xpp_model['parameters'].keys()) +
@@ -158,7 +161,10 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
             if param_props and param_props['enabled']:
                 xpp_sim[param_props['id']] = change.new_value
             else:
-                msg = 'Algorithm `{}` ({}) does not support parameter `{}`. The algorithm supports the following parameters:\n  {}'.format(
+                msg = (
+                    'Algorithm `{}` ({}) does not support parameter `{}`. '
+                    'The algorithm supports the following parameters:\n  - {}'
+                ).format(
                     exec_kisao_id, alg_props['id'], change.kisao_id,
                     sorted('\n  - '.join(
                         '{}: {}'.format(param_props['kisao_id'], param_props['id'])
