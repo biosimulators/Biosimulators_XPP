@@ -60,8 +60,8 @@ def validate_variables(xpp_model, sed_variables):
         xpp_model (:obj:`dict`): XPP model
         sed_variables (:obj:`list` of :obj:`Variable`): SED variables
     """
-    variable_ids = [key.upper() for key in xpp_model['initial_conditions'].keys()]
-    aux_variable_ids = [key.upper() for key in xpp_model['auxiliary_variables'].keys()]
+    variable_ids = [key.upper() for key in (xpp_model.get('initial_conditions', None) or {}).keys()]
+    aux_variable_ids = [key.upper() for key in (xpp_model.get('auxiliary_variables', None) or {}).keys()]
 
     invalid_symbols = []
     invalid_targets = []
@@ -85,7 +85,7 @@ def validate_variables(xpp_model, sed_variables):
     if invalid_targets:
         msg = 'The following targets are not supported:\n  - {}\n\nThe following targets are supported:\n  - {}'.format(
             '\n  - '.join(sorted(invalid_targets)),
-            '\n  - '.join(sorted(list(xpp_model['initial_conditions'].keys()) + list(xpp_model['auxiliary_variables'].keys()))),
+            '\n  - '.join(sorted(list(variable_ids) + list(aux_variable_ids))),
         )
         raise ValueError(msg)
 
@@ -97,13 +97,18 @@ def apply_model_changes(xpp_model, sed_changes):
         xpp_model (:obj:`dict`): XPP model
         sed_changes (:obj:`list` of :obj:`ModelAttributeChange`): SED model attribute changes
     """
-    parameter_ids = [key.lower() for key in xpp_model['parameters'].keys()]
-    variable_ids = [key.upper() for key in xpp_model['initial_conditions'].keys()]
+    parameters = xpp_model.get('parameters', None) or {}
+    variables = xpp_model.get('initial_conditions', None) or {}
+    xpp_model['parameters'] = parameters
+    xpp_model['initial_conditions'] = variables
+
+    parameter_ids = [key.lower() for key in parameters.keys()]
+    variable_ids = [key.upper() for key in variables.keys()]
 
     invalid_targets = []
     for change in sed_changes:
         if change.target.lower() in parameter_ids:
-            block = xpp_model['parameters']
+            block = parameters
             target = change.target.lower()
 
             for existing_target in block.keys():
@@ -112,7 +117,7 @@ def apply_model_changes(xpp_model, sed_changes):
                     break
 
         elif change.target.upper() in variable_ids:
-            block = xpp_model['initial_conditions']
+            block = variables
             target = change.target.upper()
 
             for existing_target in block.keys():
@@ -133,8 +138,8 @@ def apply_model_changes(xpp_model, sed_changes):
         ).format(
             '\n  - '.join(sorted(invalid_targets)),
             '\n  - '.join(sorted(
-                list(xpp_model['parameters'].keys()) +
-                list(xpp_model['initial_conditions'].keys())
+                list(parameter_ids) +
+                list(variable_ids)
             ))
         )
         raise ValueError(msg)
@@ -149,15 +154,11 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
         config (:obj:`Config`, optional): configuration
 
     Returns:
-        :obj:`str`: KiSAO id of the algorithm to execute
-    """
-    xpp_sim['t0'] = str(sed_sim.initial_time)
-    if sed_sim.output_start_time != sed_sim.initial_time:
-        xpp_sim['trans'] = str(sed_sim.output_start_time)
-    xpp_sim['total'] = str(sed_sim.output_end_time - sed_sim.initial_time)
-    xpp_sim['dt'] = str((sed_sim.output_end_time - sed_sim.output_start_time) / sed_sim.number_of_points)
-    xpp_sim['njmp'] = str(1)
+        :obj:`tuple`:
 
+            * :obj:`dict`: XPP simulation
+            * :obj:`str`: KiSAO id of the algorithm to execute
+    """
     substitution_policy = get_algorithm_substitution_policy(config=config)
     exec_kisao_id = get_preferred_substitute_algorithm_by_ids(
         sed_sim.algorithm.kisao_id, KISAO_ALGORITHM_MAP.keys(),
@@ -196,7 +197,36 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
                 else:
                     raise NotImplementedError(msg)
 
-    return exec_kisao_id
+    xpp_sim['t0'] = str(sed_sim.initial_time)
+    if sed_sim.output_start_time != sed_sim.initial_time:
+        xpp_sim['trans'] = str(sed_sim.output_start_time)
+    xpp_sim['total'] = str(sed_sim.output_end_time - sed_sim.initial_time)
+    if xpp_sim['meth'] in [
+        # '2rb',
+        # '5dp',
+        # '83dp',
+        'adams',
+        'backeul',
+        # 'cvode',
+        # 'discrete',
+        'euler',
+        # 'gear',
+        'modeuler',
+        # 'qualrk',
+        'rungekutta',
+        # 'stiff',
+        'volterra',
+        'ymp',
+    ]:
+        if 'dt' not in xpp_sim:
+            xpp_sim['dt'] = '0.05'
+        xpp_sim['njmp'] = str(round((sed_sim.output_end_time - sed_sim.output_start_time) /
+                                    float(xpp_sim['dt']) / sed_sim.number_of_points))
+    else:
+        xpp_sim['dt'] = str((sed_sim.output_end_time - sed_sim.output_start_time) / sed_sim.number_of_points)
+        xpp_sim['njmp'] = str(1)
+
+    return xpp_sim, exec_kisao_id
 
 
 def write_xpp_parameter_file(parameters, filename):
@@ -233,19 +263,29 @@ def write_method_to_xpp_simulation_file(simulation_method, in_filename, out_file
         out_filename (:obj:`str`): path to save modified XPP simulation file
     """
     lines = []
-    with open(in_filename, 'r') as file:
+    with open(in_filename, 'rb') as file:
         for line in file:
-            if line.startswith('@'):
+            if line.startswith(b'@'):
                 continue
-            if line.startswith('d') and not ('=' in line and (' ' not in line or line.find('=') < line.find(' '))):
+
+            last_line = line
+            i_comment = last_line.find(b'#')
+            if i_comment >= 0:
+                last_line = last_line[0:i_comment]
+            last_line = last_line.strip()
+            last_line = last_line.lower()
+            if last_line in [b'd', b'done']:
                 # check for "done" line; note just the singular character ``d`` defines the "done" line
                 break
+
             lines.append(line)
 
     for key, val in simulation_method.items():
-        lines.append('@ {}={}\n'.format(key, val))
+        line = '@ {}={}\n'.format(key, val)
+        line = line.encode()
+        lines.append(line)
 
-    with open(out_filename, 'w') as file:
+    with open(out_filename, 'wb') as file:
         for line in lines:
             file.write(line)
 
@@ -291,7 +331,7 @@ def exec_xpp_simulation(sim_filename, simulation,
     if overwrite_initial_conditions:
         fid, initial_conditions_filename = tempfile.mkstemp(suffix='.ic')
         os.close(fid)
-        write_xpp_initial_conditions_file(simulation['initial_conditions'], initial_conditions_filename)
+        write_xpp_initial_conditions_file(simulation.get('initial_conditions', None) or {}, initial_conditions_filename)
         cmd.append('-icfile')
         cmd.append(initial_conditions_filename)
 
@@ -311,11 +351,20 @@ def exec_xpp_simulation(sim_filename, simulation,
 
     # read results
     if result.returncode == 0:
-        results = pandas.read_csv(out_filename,
-                                  sep=' ',
-                                  header=None,
-                                  usecols=list(range(len(simulation['initial_conditions']) + 1)),
-                                  names=[Symbol.time.value] + list(simulation['initial_conditions'].keys()))
+        variable_ids = list(key.upper() for key in (simulation.get('initial_conditions', None) or {}).keys())
+        aux_variable_ids = list(key.upper() for key in (simulation.get('auxiliary_variables', None) or {}).keys())
+        column_names = (
+            [Symbol.time.value]
+            + variable_ids
+            + aux_variable_ids
+        )
+        results = pandas.read_csv(
+            out_filename,
+            sep=' ',
+            header=None,
+            usecols=list(range(len(column_names))),
+            names=column_names,
+        )
 
     # cleanup temporary files
     if out_filename:
@@ -337,7 +386,7 @@ def exec_xpp_simulation(sim_filename, simulation,
         or 'Integration not completed' in stdout
         or 'out of bounds' in stdout
     ):
-        raise RuntimeError('XPP failed: {}'.format(stdout))
+        raise RuntimeError('XPP failed ({}): {}'.format(result.returncode, stdout))
 
     # return results
     return results

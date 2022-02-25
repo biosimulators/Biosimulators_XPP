@@ -35,7 +35,7 @@
   "pythonApi": {
     "package": "biosimulators-xpp",
     "module": "biosimulators_xpp",
-      "installationInstructions": "https://docs.biosimulators.org/Biosimulators_XPP/installation.html"
+    "installationInstructions": "https://docs.biosimulators.org/Biosimulators_XPP/installation.html"
   },
   "authors": [{
     "firstName": "G. Bard",
@@ -48,10 +48,10 @@
   }],
   "references": {
     "identifiers": [{
-            "namespace": "pypi",
-            "id": "biosimulators-xpp",
-            "url": "https://pypi.org/project/biosimulators-xpp/"
-          }],
+      "namespace": "pypi",
+      "id": "biosimulators-xpp",
+      "url": "https://pypi.org/project/biosimulators-xpp/"
+    }],
     "citations": [{
         "title": "XPPAUT",
         "authors": "Bard Ermentrout",
@@ -97,17 +97,15 @@
         "id": "format_9010",
         "version": null,
         "supportedFeatures": []
-      }],      
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      }],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -122,41 +120,47 @@
         "supportedFeatures": []
       }],
       "parameters": [{
-        "kisaoId": {
-          "namespace": "KISAO",
-          "id": "KISAO_0000488"
-        },
-        "id": "seed",
-        "name": "Random number generator seed",
-        "type": "integer",
-        "value": null,
-        "recommendedRange": null,
-        "availableSoftwareInterfaceTypes": [
-          "desktop application",
-          "library",
-          "command-line application",
-          "BioSimulators Docker image"
-        ]
-      }],
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000488"
+          },
+          "id": "seed",
+          "name": "Random number generator seed",
+          "type": "integer",
+          "value": null,
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
+        }
+      ],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -198,16 +202,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }    
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -221,26 +223,47 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "parameters": [],
+      "parameters": [{
+        "kisaoId": {
+          "namespace": "KISAO",
+          "id": "KISAO_0000483"
+        },
+        "id": "dt",
+        "name": "step size",
+        "type": "float",
+        "value": "0.05",
+        "recommendedRange": null,
+        "availableSoftwareInterfaceTypes": [
+          "desktop application",
+          "library",
+          "command-line application",
+          "BioSimulators Docker image"
+        ]
+      }],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -269,16 +292,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -319,27 +340,49 @@
           "availableSoftwareInterfaceTypes": [
             "desktop application"
           ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000483"
+          },
+          "id": "dt",
+          "name": "step size",
+          "type": "float",
+          "value": "0.05",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
         }
       ],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -368,16 +411,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -391,26 +432,47 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "parameters": [],
+      "parameters": [{
+        "kisaoId": {
+          "namespace": "KISAO",
+          "id": "KISAO_0000483"
+        },
+        "id": "dt",
+        "name": "step size",
+        "type": "float",
+        "value": "0.05",
+        "recommendedRange": null,
+        "availableSoftwareInterfaceTypes": [
+          "desktop application",
+          "library",
+          "command-line application",
+          "BioSimulators Docker image"
+        ]
+      }],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -439,16 +501,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -518,21 +578,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -561,16 +626,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -623,21 +686,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -666,16 +734,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -728,21 +794,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -771,16 +842,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -867,21 +936,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -910,16 +984,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1006,21 +1078,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -1068,16 +1145,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1091,26 +1166,47 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "parameters": [],
+      "parameters": [{
+        "kisaoId": {
+          "namespace": "KISAO",
+          "id": "KISAO_0000483"
+        },
+        "id": "dt",
+        "name": "step size",
+        "type": "float",
+        "value": "0.05",
+        "recommendedRange": null,
+        "availableSoftwareInterfaceTypes": [
+          "desktop application",
+          "library",
+          "command-line application",
+          "BioSimulators Docker image"
+        ]
+      }],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -1139,16 +1235,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1269,21 +1363,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -1322,16 +1421,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1345,26 +1442,47 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "parameters": [],
+      "parameters": [{
+        "kisaoId": {
+          "namespace": "KISAO",
+          "id": "KISAO_0000483"
+        },
+        "id": "dt",
+        "name": "step size",
+        "type": "float",
+        "value": "0.05",
+        "recommendedRange": null,
+        "availableSoftwareInterfaceTypes": [
+          "desktop application",
+          "library",
+          "command-line application",
+          "BioSimulators Docker image"
+        ]
+      }],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -1393,16 +1511,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1416,26 +1532,47 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "parameters": [],
+      "parameters": [{
+        "kisaoId": {
+          "namespace": "KISAO",
+          "id": "KISAO_0000483"
+        },
+        "id": "dt",
+        "name": "step size",
+        "type": "float",
+        "value": "0.05",
+        "recommendedRange": null,
+        "availableSoftwareInterfaceTypes": [
+          "desktop application",
+          "library",
+          "command-line application",
+          "BioSimulators Docker image"
+        ]
+      }],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -1464,16 +1601,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1531,27 +1666,49 @@
             "command-line application",
             "BioSimulators Docker image"
           ]
+        },
+        {
+          "kisaoId": {
+            "namespace": "KISAO",
+            "id": "KISAO_0000483"
+          },
+          "id": "dt",
+          "name": "step size",
+          "type": "float",
+          "value": "0.05",
+          "recommendedRange": null,
+          "availableSoftwareInterfaceTypes": [
+            "desktop application",
+            "library",
+            "command-line application",
+            "BioSimulators Docker image"
+          ]
         }
       ],
       "outputDimensions": [{
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [
@@ -1604,16 +1761,14 @@
         "version": null,
         "supportedFeatures": []
       }],
-      "modelChangePatterns": [
-        {
-          "name": "Change parameter values or variable initial conditions",
-          "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
-          "target": {
-            "value": "{ parameter or variable name }",
-            "grammar": "XPP"
-          }
-        }     
-      ],
+      "modelChangePatterns": [{
+        "name": "Change parameter values or variable initial conditions",
+        "types": ["SedAttributeModelChange", "SedComputeAttributeChangeModelChange", "SedSetValueAttributeModelChange"],
+        "target": {
+          "value": "{ parameter or variable name }",
+          "grammar": "XPP"
+        }
+      }],
       "simulationFormats": [{
         "namespace": "EDAM",
         "id": "format_3685",
@@ -1683,21 +1838,26 @@
         "namespace": "SIO",
         "id": "SIO_000418"
       }],
-      "outputVariablePatterns": [
-        {
+      "outputVariablePatterns": [{
           "name": "variable of integration (time)",
           "symbol": {
-                    "value": "time",
-                    "namespace": "urn:sedml:symbol"
-                  }
+            "value": "time",
+            "namespace": "urn:sedml:symbol"
+          }
         },
         {
           "name": "variables",
-          "target": {"value": "variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         },
         {
           "name": "auxiliary variables",
-          "target": {"value": "auxiliary variable name (case insensitive)", "grammar": "XPP"}
+          "target": {
+            "value": "auxiliary variable name (case insensitive)",
+            "grammar": "XPP"
+          }
         }
       ],
       "availableSoftwareInterfaceTypes": [

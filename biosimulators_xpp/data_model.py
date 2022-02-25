@@ -20,6 +20,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
         'id': 'rungekutta',
         'name': "4th order Runge-Kutta method",
         'parameters': {
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
+                'enabled': True,
+            },
         },
     }),
     ('KISAO_0000029', {
@@ -42,6 +50,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
         'id': 'euler',
         'name': "Forward Euler one step method",
         'parameters': {
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
+                'enabled': True,
+            },
         },
     }),
     ('KISAO_0000031', {
@@ -65,6 +81,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
                 'default': 10,
                 'enabled': False,
             },
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
+                'enabled': True,
+            },
         },
     }),
     ('KISAO_0000279', {
@@ -72,6 +96,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
         'id': 'adams',
         'name': "Adams-Bashforth fourth order predictor-corrector method",
         'parameters': {
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
+                'enabled': True,
+            },
         },
     }),
     ('KISAO_0000288', {
@@ -289,6 +321,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
         'id': 'modeuler',
         'name': "Two step modified Euler method",
         'parameters': {
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
+                'enabled': True,
+            },
         },
     }),
     ('KISAO_0000367', {
@@ -296,6 +336,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
         'id': 'ymp',
         'name': "Symplectic method",
         'parameters': {
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
+                'enabled': True,
+            },
         },
     }),
     ('KISAO_0000664', {
@@ -325,6 +373,14 @@ KISAO_ALGORITHM_MAP = collections.OrderedDict([
                 'name': 'maximum number of points',
                 'type': ValueType.integer,
                 'default': 4000,
+                'enabled': True,
+            },
+            'KISAO_0000483': {
+                'kisao_id': 'KISAO_0000483',
+                'id': 'dt',
+                'name': 'step size',
+                'type': ValueType.float,
+                'default': 0.05,
                 'enabled': True,
             },
         },

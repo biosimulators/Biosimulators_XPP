@@ -124,8 +124,8 @@ class UtilsTestCase(unittest.TestCase):
             't0': '10.0',
             'trans': '20.0',
             'total': '20.0',
-            'dt': '1.0',
-            'njmp': '1',
+            'dt': str((30 - 20) / 10),
+            'njmp': str(1),
             'meth': 'cvode',
             'toler': '1e-8',
             'atoler': '1e-6',
@@ -161,8 +161,8 @@ class UtilsTestCase(unittest.TestCase):
             't0': '10.0',
             'trans': '20.0',
             'total': '20.0',
-            'dt': '1.0',
-            'njmp': '1',
+            'dt': '0.05',
+            'njmp': str(round((30 - 20) / 0.05 / 10)),
             'meth': 'rungekutta',
         })
 
@@ -192,8 +192,8 @@ class UtilsTestCase(unittest.TestCase):
             't0': '10.0',
             'trans': '20.0',
             'total': '20.0',
-            'dt': '1.0',
-            'njmp': '1',
+            'dt': '0.05',
+            'njmp': str(round((30 - 20) / 0.05 / 10)),
             'meth': 'rungekutta',
         })
 
@@ -341,8 +341,8 @@ class UtilsTestCase(unittest.TestCase):
         self.assertEqual(xpp_sim['simulation_method']['t0'], '10.0')
         self.assertEqual(xpp_sim['simulation_method']['trans'], '20.0')
         self.assertEqual(xpp_sim['simulation_method']['total'], '20.0')
-        self.assertEqual(xpp_sim['simulation_method']['dt'], '0.5')
-        self.assertEqual(xpp_sim['simulation_method']['njmp'], '1')
+        self.assertEqual(xpp_sim['simulation_method']['dt'], '0.05')
+        self.assertEqual(xpp_sim['simulation_method']['njmp'], str(round((30 - 20) / 0.05 / 20)))
 
         xpp_results = utils.exec_xpp_simulation(filename, xpp_sim)
         numpy.testing.assert_allclose(xpp_results.loc[:, Symbol.time.value],

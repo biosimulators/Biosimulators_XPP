@@ -200,7 +200,7 @@ def preprocess_sed_task(task, variables, config=None):
     validate_variables(xpp_sim, variables)
 
     # setup simulation
-    exec_kisao_id = set_up_simulation(sim, xpp_sim['simulation_method'], config=config)
+    xpp_sim['simulation_method'], exec_kisao_id = set_up_simulation(sim, xpp_sim.get('simulation_method', None) or {}, config=config)
 
     return {
         'model_filename': sanitized_filename,
