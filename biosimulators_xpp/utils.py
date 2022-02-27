@@ -226,7 +226,20 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
         xpp_sim['dt'] = str((sed_sim.output_end_time - sed_sim.output_start_time) / sed_sim.number_of_points)
         xpp_sim['njmp'] = str(1)
 
-    return xpp_sim, exec_kisao_id
+    transient = sed_sim.output_start_time - sed_sim.initial_time
+    freq_transient_samples = 1
+    if transient != 0:
+        dt = float(xpp_sim['dt'])
+        while True:
+            num_transient_steps = transient / (dt / freq_transient_samples)
+            transient_steps_error = abs(num_transient_steps - round(num_transient_steps))
+            if transient_steps_error < 1e-8:
+                break
+            freq_transient_samples += 1
+
+        xpp_sim['dt'] = str(dt / freq_transient_samples)
+
+    return xpp_sim, exec_kisao_id, freq_transient_samples
 
 
 def write_xpp_parameter_file(parameters, filename):

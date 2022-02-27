@@ -144,6 +144,43 @@ class CliTestCase(unittest.TestCase):
         numpy.testing.assert_allclose(variable_results_3['Time'], numpy.linspace(5., 10., 10 + 1))
         numpy.testing.assert_allclose(variable_results_3['u'][0], variable_results['u'][5], rtol=1e-4)
 
+    def test_exec_sed_task_successfully_with_transient(self):
+        task = sedml_data_model.Task(
+            model=sedml_data_model.Model(
+                source=self.EXAMPLE_MODEL_FILENAME,
+                language=sedml_data_model.ModelLanguage.XPP.value,
+            ),
+            simulation=sedml_data_model.UniformTimeCourseSimulation(
+                initial_time=0.,
+                output_start_time=10.,
+                output_end_time=25.,
+                number_of_points=10,
+                algorithm=sedml_data_model.Algorithm(
+                    kisao_id='KISAO_0000019',
+                ),
+            ),
+        )
+
+        variables = [
+            sedml_data_model.Variable(
+                id='Time',
+                symbol=sedml_data_model.Symbol.time,
+                task=task),
+        ]
+
+        variable_results, _ = core.exec_sed_task(task, variables)
+        numpy.testing.assert_allclose(
+            variable_results['Time'],
+            numpy.linspace(task.simulation.output_start_time, task.simulation.output_end_time, 10 + 1))
+
+        task.simulation.initial_time = 10.
+        task.simulation.output_start_time = 20.
+        task.output_end_time = 35.
+        variable_results, _ = core.exec_sed_task(task, variables)
+        numpy.testing.assert_allclose(
+            variable_results['Time'],
+            numpy.linspace(task.simulation.output_start_time, task.simulation.output_end_time, 10 + 1))
+
     def test_exec_sedml_docs_in_combine_archive_successfully(self):
         doc, archive_filename = self._build_combine_archive()
 

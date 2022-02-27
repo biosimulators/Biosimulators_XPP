@@ -220,6 +220,57 @@ class UtilsTestCase(unittest.TestCase):
             with self.assertWarns(BioSimulatorsWarning):
                 utils.set_up_simulation(sed_sim, xpp_sim['simulation_method'])
 
+    def test_set_up_simulation_with_transient(self):
+        filename = os.path.join(self.FIXTURES_DIRNAME, 'wilson-cowan.ode')
+
+        _, _, xpp_sim = validate_model(filename)
+
+        sed_sim = UniformTimeCourseSimulation(
+            initial_time=0.,
+            output_start_time=10.,
+            output_end_time=25.,
+            number_of_points=10,
+            algorithm=Algorithm(
+                kisao_id='KISAO_0000019',
+            )
+        )
+
+        _, _, freq = utils.set_up_simulation(sed_sim, xpp_sim['simulation_method'])
+
+        self.assertEqual(freq, 3)
+        self.assertEqual(xpp_sim['simulation_method'], {
+            't0': '0.0',
+            'trans': '10.0',
+            'total': '25.0',
+            'dt': str((25 - 10) / 10 / freq),
+            'njmp': str(1),
+            'meth': 'cvode',
+        })
+
+        _, _, xpp_sim = validate_model(filename)
+
+        sed_sim = UniformTimeCourseSimulation(
+            initial_time=10.,
+            output_start_time=20.,
+            output_end_time=35.,
+            number_of_points=10,
+            algorithm=Algorithm(
+                kisao_id='KISAO_0000019',
+            )
+        )
+
+        _, _, freq = utils.set_up_simulation(sed_sim, xpp_sim['simulation_method'])
+
+        self.assertEqual(freq, 3)
+        self.assertEqual(xpp_sim['simulation_method'], {
+            't0': '10.0',
+            'trans': '20.0',
+            'total': '25.0',
+            'dt': str((35 - 20) / 10 / freq),
+            'njmp': str(1),
+            'meth': 'cvode',
+        })
+
     def test_write_xpp_parameter_file(self):
         filename = os.path.join(self.dirname, 'model.par')
         utils.write_xpp_parameter_file({

@@ -138,6 +138,8 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
 
     # run simulation
     raw_results = exec_xpp_simulation(preprocessed_task['model_filename'], xpp_sim)
+    if preprocessed_task['freq_transient_samples'] != 1:
+        raw_results = raw_results.iloc[::preprocessed_task['freq_transient_samples'], :]
     if len(raw_results.index) != sim.number_of_steps + 1:
         raise ValueError('Simulation results has {}, not {} points'.format(len(raw_results.index), sim.number_of_steps + 1))
 
@@ -202,10 +204,12 @@ def preprocess_sed_task(task, variables, config=None):
     validate_variables(xpp_sim, variables)
 
     # setup simulation
-    xpp_sim['simulation_method'], exec_kisao_id = set_up_simulation(sim, xpp_sim.get('simulation_method', None) or {}, config=config)
+    xpp_sim['simulation_method'], exec_kisao_id, freq_transient_samples = set_up_simulation(
+        sim, xpp_sim.get('simulation_method', None) or {}, config=config)
 
     return {
         'model_filename': sanitized_filename,
         'xpp_simulation': xpp_sim,
         'algorithm_kisao_id': exec_kisao_id,
+        'freq_transient_samples': freq_transient_samples,
     }
