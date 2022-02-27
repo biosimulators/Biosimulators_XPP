@@ -291,7 +291,6 @@ def write_method_to_xpp_simulation_file(simulation_method, in_filename, out_file
 
 
 def exec_xpp_simulation(sim_filename, simulation,
-                        number_of_steps=None,
                         set_filename=None,
                         overwrite_parameters=True,
                         overwrite_initial_conditions=True,
@@ -301,7 +300,6 @@ def exec_xpp_simulation(sim_filename, simulation,
     Args:
         sim_filename (:obj:`str`): path to the XPP file
         simulation (:obj:`dict`): simulation parameters, initial conditions, and method to override defaults
-        number_of_steps (:obj:`int`, optional): expected number of steps
         set_filename (:obj:`str`, optional): path to XPP set file
         overwrite_parameters (:obj:`bool`, optional): whether to overwrite the default parameters
         overwrite_initial_conditions (:obj:`bool`, optional): whether to overwrite the default initial conditions
@@ -369,8 +367,6 @@ def exec_xpp_simulation(sim_filename, simulation,
         # validate results
         if len(results.columns) - 1 != len(column_names):
             raise ValueError('Simulation results has {}, not {} variables'.format(len(results.columns), len(column_names)))
-        if number_of_steps is not None and len(results.index) != number_of_steps + 1:
-            raise ValueError('Simulation results has {}, not {} points'.format(len(results.index), number_of_steps + 1))
 
         # drop last empty column
         results = results.iloc[:, :-1]
