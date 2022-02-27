@@ -394,13 +394,6 @@ def exec_xpp_simulation(sim_filename, simulation,
         raise RuntimeError('XPP failed ({}): {}'.format(result.returncode, stdout))
 
     # read results
-    variable_ids = list(key.upper() for key in (simulation.get('initial_conditions', None) or {}).keys())
-    aux_variable_ids = list(key.upper() for key in (simulation.get('auxiliary_variables', None) or {}).keys())
-    column_names = (
-        [Symbol.time.value]
-        + variable_ids
-        + aux_variable_ids
-    )
     results = pandas.read_csv(
         out_filename,
         sep=' ',
@@ -408,15 +401,28 @@ def exec_xpp_simulation(sim_filename, simulation,
     )
 
     # validate results
+    column_names = simulation['outfile_column_names']
     if len(results.columns) - 1 != len(column_names):
         remove_files(temp_filenames)
-        raise ValueError('Simulation results has {}, not {} variables'.format(len(results.columns), len(column_names)))
+        raise ValueError('Simulation results has {}, not {} variables'.format(len(results.columns) - 1, len(column_names)))
 
     # drop last empty column
     results = results.iloc[:, :-1]
 
+    # drop duplicate columns and column names
+    unique_column_names = []
+    duplicate_column_indices = []
+    for i_column, column_name in enumerate(column_names):
+        if column_name in unique_column_names:
+            duplicate_column_indices.append(i_column)
+        else:
+            unique_column_names.append(column_name)
+
+    if duplicate_column_indices:
+        results.drop(axis=1, columns=results.columns[duplicate_column_indices], inplace=True)
+
     # set column names
-    results.columns = column_names
+    results.columns = unique_column_names
 
     # cleanup temporary files
     remove_files(temp_filenames)
