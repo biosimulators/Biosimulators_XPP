@@ -406,6 +406,8 @@ def exec_xpp_simulation(sim_filename, simulation,
         result.returncode != 0
         or 'Integration not completed' in stdout
         or 'out of bounds' in stdout
+        or 'Incompatible parameters' in stdout
+        or 'initial conditions but only found' in stdout
     ):
         raise RuntimeError('XPP failed ({}): {}'.format(result.returncode, stdout))
 
