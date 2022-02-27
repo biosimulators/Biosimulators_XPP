@@ -360,7 +360,10 @@ def exec_xpp_simulation(sim_filename, simulation,
         cmd[1] = temp_sim_filename
 
     # execute simulation
-    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    result = subprocess.run(cmd,
+                            cwd=os.path.dirname(sim_filename),
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            check=False)
 
     # read results
     if result.returncode == 0:
