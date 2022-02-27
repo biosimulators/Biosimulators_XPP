@@ -137,7 +137,7 @@ def exec_sed_task(task, variables, preprocessed_task=None, log=None, config=None
     exec_kisao_id = preprocessed_task['algorithm_kisao_id']
 
     # run simulation
-    raw_results = exec_xpp_simulation(preprocessed_task['model_filename'], xpp_sim)
+    raw_results = exec_xpp_simulation(preprocessed_task['model_filename'], xpp_sim, number_of_steps=sim.number_of_steps)
 
     # transform results
     variable_results = get_results_of_sed_variables(sim, raw_results, variables)
