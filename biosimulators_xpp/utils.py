@@ -16,6 +16,7 @@ from biosimulators_utils.warnings import warn, BioSimulatorsWarning
 from kisao.data_model import AlgorithmSubstitutionPolicy, ALGORITHM_SUBSTITUTION_POLICY_LEVELS
 from kisao.utils import get_preferred_substitute_algorithm_by_ids
 import collections  # noqa: F401
+import decimal
 import os
 import pandas
 import re
@@ -221,16 +222,21 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
     ]:
         if 'dt' not in xpp_sim:
             xpp_sim['dt'] = '0.05'
-        xpp_sim['njmp'] = str(round((sed_sim.output_end_time - sed_sim.output_start_time) /
-                                    float(xpp_sim['dt']) / sed_sim.number_of_points))
+        xpp_sim['njmp'] = str(round(
+            (decimal.Decimal(sed_sim.output_end_time) - decimal.Decimal(sed_sim.output_start_time)) /
+            decimal.Decimal(xpp_sim['dt']) / decimal.Decimal(sed_sim.number_of_points)
+        ))
     else:
-        xpp_sim['dt'] = str((sed_sim.output_end_time - sed_sim.output_start_time) / sed_sim.number_of_points)
+        xpp_sim['dt'] = str(
+            (decimal.Decimal(sed_sim.output_end_time) -
+             decimal.Decimal(sed_sim.output_start_time)) / decimal.Decimal(sed_sim.number_of_points)
+        )
         xpp_sim['njmp'] = str(1)
 
-    transient = sed_sim.output_start_time - sed_sim.initial_time
-    freq_transient_samples = 1
+    transient = decimal.Decimal(sed_sim.output_start_time) - decimal.Decimal(sed_sim.initial_time)
+    freq_transient_samples = decimal.Decimal(1)
     if transient != 0:
-        dt = float(xpp_sim['dt'])
+        dt = decimal.Decimal(xpp_sim['dt'])
         while True:
             num_transient_steps = transient / (dt / freq_transient_samples)
             transient_steps_error = abs(num_transient_steps - round(num_transient_steps))
@@ -240,6 +246,7 @@ def set_up_simulation(sed_sim, xpp_sim, config=None):
 
         xpp_sim['dt'] = str(dt / freq_transient_samples)
 
+    freq_transient_samples = int(freq_transient_samples)
     return xpp_sim, exec_kisao_id, freq_transient_samples
 
 

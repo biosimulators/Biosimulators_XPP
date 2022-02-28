@@ -124,7 +124,7 @@ class UtilsTestCase(unittest.TestCase):
             't0': '10.0',
             'trans': '20.0',
             'total': '20.0',
-            'dt': str((30 - 20) / 10),
+            'dt': str(int((30 - 20) / 10)),
             'njmp': str(1),
             'meth': 'cvode',
             'toler': '1e-8',
